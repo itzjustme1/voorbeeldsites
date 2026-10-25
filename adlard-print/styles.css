@@ -82,17 +82,28 @@ h2, h3 { text-wrap: balance; }
 .facts strong { font-size: 24px; font-weight: 900; letter-spacing: -.03em; }
 .facts span { color: var(--grey); font-size: 15px; }
 
-/* Work plates: greyscale until hovered */
-.plates-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--rule); border: 2px solid var(--rule); }
-.plate { margin: 0; background: var(--photo); display: flex; flex-direction: column; }
-.plate img {
-  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 75% 40%;
-  filter: grayscale(1) contrast(1.05);
-  transition: filter .35s ease;
+/* Recent work: a row of cards you can swipe or step through with the arrows */
+.carousel { position: relative; }
+.carousel-track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 20px) / 3.4); column-gap: 20px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain;
+  scrollbar-width: none; padding-bottom: 4px;
 }
-.plate:hover img { filter: none; }
-.plate figcaption { background: #fff; border-top: 2px solid var(--rule); padding: 12px 14px 14px; font-size: 14px; margin-top: auto; }
-.plate figcaption b { font-size: 16px; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.card { scroll-snap-align: start; border: 2px solid var(--rule); background: #fff; display: flex; flex-direction: column; }
+.card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 75% 40%; background: var(--photo); border-bottom: 2px solid var(--rule); }
+.card-text { padding: 18px 20px 22px; }
+.card-text h3 { margin-bottom: 6px; }
+.card-text p { margin: 0; color: var(--grey); font-size: 16px; }
+.carousel-controls { display: flex; align-items: center; gap: 10px; margin-top: 22px; }
+.carousel-count { margin: 0 auto 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.carousel-btn {
+  width: 52px; height: 52px; border: 2px solid var(--ink); background: #fff; color: var(--ink);
+  font: 400 30px/1 "Schibsted Grotesk", system-ui, sans-serif; cursor: pointer; display: grid; place-items: center;
+  transition: background-color .15s ease, color .15s ease;
+}
+.carousel-btn:hover:not(:disabled) { background: var(--ink); color: #fff; }
+.carousel-btn:disabled { opacity: .3; cursor: default; }
 
 /* Sections */
 .section { padding: 96px 0; }
@@ -147,7 +158,7 @@ h3 { margin: 0 0 8px; font-size: 21px; line-height: 1.2; font-weight: 700; lette
   .sec-head, .books-grid, .contact-grid, .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .hero-grid { gap: 28px; }
   .hero-photo img { aspect-ratio: 3 / 2; }
-  .plates-grid { grid-template-columns: 1fr 1fr; }
+  .carousel-track { grid-auto-columns: calc((100% - 20px) / 2.2); }
   .facts-grid { grid-template-columns: 1fr 1fr; }
   .facts-grid > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .facts-grid > div:nth-child(n+3) { border-top: 1px solid var(--hair); }
@@ -181,10 +192,11 @@ h3 { margin: 0 0 8px; font-size: 21px; line-height: 1.2; font-weight: 700; lette
   .num { font-size: 48px; margin-bottom: 14px; }
   .index > div { grid-template-columns: 1fr; gap: 6px; }
   .details > div { grid-template-columns: 1fr; gap: 2px; }
-  .plate figcaption { font-size: 13px; padding: 10px 12px 12px; }
   .foot-meta { text-align: left; }
-  .plate figcaption b { font-size: 14px; }
+  .carousel-track { grid-auto-columns: 80%; column-gap: 14px; }
+  .card-text { padding: 16px 16px 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn, .plate img { transition: none; }
+  .btn, .carousel-btn { transition: none; }
+  .carousel-track { scroll-behavior: auto; }
 }
