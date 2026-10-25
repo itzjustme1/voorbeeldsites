@@ -92,10 +92,15 @@
     .card { transition: none; }
     .card:hover { transform: none; }
   }
+  .wrap { position: relative; }
+  .lang { position: absolute; top: 24px; right: 24px; font-size: 14px; color: var(--muted); }
+  .lang a { color: inherit; }
+  @media (max-width: 600px) { .lang { top: 16px; right: 16px; } }
 </style>
 </head>
 <body>
   <div class="wrap">
+    <p class="lang"><a href="en/" hreflang="en" lang="en">English</a></p>
     <header>
       <p class="eyebrow">Valentijn de Grijff · Webdesign</p>
       <h1>Websites voor lokale ondernemers</h1>
@@ -124,6 +129,14 @@
         <div class="meta">
           <h2>Notenshop Daamen</h2>
           <p>Notenbranderij in De Pijp, Amsterdam</p>
+          <span class="go">Bekijk de site →</span>
+        </div>
+      </a>
+      <a class="card" href="tom-walsh-flooring/">
+        <div class="thumb"><iframe src="tom-walsh-flooring/" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></div>
+        <div class="meta">
+          <h2>Tom Walsh Flooring</h2>
+          <p>Vloerenspecialist in Limerick, Ierland (Engelstalig)</p>
           <span class="go">Bekijk de site →</span>
         </div>
       </a>

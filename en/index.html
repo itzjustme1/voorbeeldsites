@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<link rel="alternate" hreflang="nl" href="https://itzjustme1.github.io/voorbeeldsites/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website examples · Valentijn de Grijff</title>
+<meta name="description" content="Example websites for small businesses, designed and built by Valentijn de Grijff, a 16-year-old web designer from the Netherlands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f3ee;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --muted: #6b655c;
+    --line: #e4ded4;
+    --accent: #8a5a3c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --surface: #1f1d1a;
+      --ink: #f2eee8;
+      --muted: #a39d93;
+      --line: #33302b;
+      --accent: #d1a07e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 96px 0 56px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 16px;
+  }
+  h1 {
+    font-family: Fraunces, Georgia, serif; font-weight: 400;
+    font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -.02em;
+    margin: 0 0 24px; max-width: 14ch;
+  }
+  .lead { font-size: 18px; color: var(--muted); max-width: 56ch; margin: 0; }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding-bottom: 80px;
+  }
+  .card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    overflow: hidden;
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+  .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .thumb {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    background: var(--line); border-bottom: 1px solid var(--line);
+  }
+  .thumb iframe {
+    position: absolute; top: 0; left: 0;
+    width: 400%; height: 400%; border: 0;
+    transform: scale(.25); transform-origin: 0 0;
+    pointer-events: none;
+  }
+  .meta { padding: 20px 22px 24px; }
+  .meta h2 {
+    font-family: Fraunces, Georgia, serif; font-weight: 500;
+    font-size: 22px; line-height: 1.2; margin: 0 0 6px;
+  }
+  .meta p { margin: 0; color: var(--muted); font-size: 15px; }
+  .meta .go { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; color: var(--accent); }
+  footer {
+    border-top: 1px solid var(--line); padding: 32px 0 48px;
+    color: var(--muted); font-size: 14px;
+  }
+  footer a { color: inherit; }
+  .note { font-size: 13px; margin-top: 8px; }
+  @media (max-width: 600px) {
+    header { padding: 64px 0 40px; }
+    .wrap { padding: 0 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+    .card:hover { transform: none; }
+  }
+  .lang { position: absolute; top: 24px; right: 24px; font-size: 14px; color: var(--muted); }
+  .lang a { color: inherit; }
+  .wrap { position: relative; }
+  .steps { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); padding: 8px 0 72px; margin: 0; list-style: none; }
+  .steps li { border-top: 1px solid var(--line); padding-top: 18px; }
+  .steps h3, .price h3 { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 22px; line-height: 1.2; margin: 0 0 6px; }
+  .steps p, .price p { margin: 0; color: var(--muted); font-size: 15px; }
+  .section-title { font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(28px, 4vw, 36px); letter-spacing: -.01em; margin: 0 0 24px; }
+  .prices { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); padding-bottom: 88px; }
+  .price { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px 22px; }
+  .price .amount { font-family: Fraunces, Georgia, serif; font-size: 40px; line-height: 1; color: var(--ink); margin: 6px 0 12px; }
+  .cta { display: inline-block; margin-top: 28px; background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 999px; }
+  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 600px) { .lang { top: 16px; right: 16px; } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="lang"><a href="../" hreflang="nl" lang="nl">Nederlands</a></p>
+    <header>
+      <p class="eyebrow">Valentijn de Grijff · Web design</p>
+      <h1>Websites for small businesses</h1>
+      <p class="lead">I'm Valentijn, a 16-year-old web designer from the Netherlands. I design and build clean, fast websites that work properly on phones. Below are a few examples I've made to show what's possible.</p>
+      <a class="cta" href="mailto:vbdgrijff@gmail.com?subject=Free%20website%20preview">Ask for a free preview</a>
+    </header>
+
+    <main>
+    <div class="grid">
+      <a class="card" href="../tom-walsh-flooring/">
+        <div class="thumb"><iframe src="../tom-walsh-flooring/" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></div>
+        <div class="meta">
+          <h2>Tom Walsh Flooring</h2>
+          <p>Commercial flooring contractor in Limerick, Ireland</p>
+          <span class="go">View the site</span>
+        </div>
+      </a>
+      <a class="card" href="../pisa-ijs/">
+        <div class="thumb"><iframe src="../pisa-ijs/" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></div>
+        <div class="meta">
+          <h2>Pisa IJs</h2>
+          <p>Italian ice cream parlour in Amsterdam (in Dutch)</p>
+          <span class="go">View the site</span>
+        </div>
+      </a>
+      <a class="card" href="../cheers-slijterij/">
+        <div class="thumb"><iframe src="../cheers-slijterij/" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></div>
+        <div class="meta">
+          <h2>Slijterij Cheers</h2>
+          <p>Neighbourhood wine &amp; spirits shop in Amsterdam (in Dutch)</p>
+          <span class="go">View the site</span>
+        </div>
+      </a>
+      <a class="card" href="../notenshop-daamen/">
+        <div class="thumb"><iframe src="../notenshop-daamen/" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe></div>
+        <div class="meta">
+          <h2>Notenshop Daamen</h2>
+          <p>Fresh-roasted nut shop in Amsterdam (in Dutch)</p>
+          <span class="go">View the site</span>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">How it works</h2>
+    <ol class="steps">
+      <li><h3>1. Free preview</h3><p>I make a preview of your new website using your own text and photos. No cost, no obligation.</p></li>
+      <li><h3>2. You decide</h3><p>Like it? We go through the changes you want. Not for you? No problem, that's the end of it.</p></li>
+      <li><h3>3. Your new site</h3><p>I finish the site and make sure it looks good on every phone, tablet and computer.</p></li>
+    </ol>
+
+    <h2 class="section-title">Prices</h2>
+    <div class="prices">
+      <section class="price"><h3>One-page website</h3><p class="amount">€100</p><p>Everything on one clear page: who you are, what you offer and how to reach you.</p></section>
+      <section class="price"><h3>Multi-page website</h3><p class="amount">€250</p><p>Separate pages for services, work, about and contact.</p></section>
+    </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      Contact: <a href="mailto:vbdgrijff@gmail.com">vbdgrijff@gmail.com</a>
+      <p class="note">These are concept designs, not the official websites of the businesses shown.</p>
+    </div>
+  </footer>
+</body>
+</html>
