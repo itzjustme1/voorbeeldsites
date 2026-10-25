@@ -47,7 +47,8 @@
   }]
 }
 </script>
-<!-- All product photos are Adlard Print's own, taken from adlardprint.com. -->
+<!-- Product photos are Adlard Print's own, taken from adlardprint.com.
+     img/old-school.jpg: "Ruddington Free School" by Alan Murray-Rust, geograph.org.uk, CC BY-SA 2.0 (via Wikimedia Commons). -->
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -73,37 +74,30 @@
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="wrap">
-      <h1 id="hero-title">Printed <span class="red">properly</span> since 1970.</h1>
-      <div class="hero-row">
-        <p class="lead">A family-run printers in The Old School on Ruddington Green. Design, litho and digital printing and finishing, all under one roof.</p>
-        <p class="hero-note">Customers have stayed with us since our early years in business. Quality print, reliability and going that extra mile is why.</p>
-        <div class="hero-actions">
-          <a class="btn btn-red" href="mailto:info@adlardprint.com?subject=Print%20quote">Get a quote</a>
-          <a class="btn btn-line" href="#print">See our work</a>
+      <div class="hero-grid">
+        <h1 id="hero-title">Printed <span class="red">properly</span> since 1970.</h1>
+        <div class="hero-side">
+          <p class="lead">A family-run printers in The Old School on Ruddington Green. Design, litho and digital printing and finishing, all under one roof.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="mailto:info@adlardprint.com?subject=Print%20quote">Get a quote</a>
+            <a class="btn btn-line" href="tel:+441159214863">Call 0115 921 4863</a>
+          </div>
         </div>
       </div>
+      <figure class="hero-photo">
+        <img src="img/old-school.jpg" width="900" height="620" alt="The Old School on Ruddington Green: a red-brick Victorian school building with tall gothic windows." fetchpriority="high">
+        <figcaption>The Old School, The Green, Ruddington. Home of Adlard Print.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="plates" aria-label="Recent work">
-    <div class="wrap"><div class="plates-grid">
-      <figure class="plate">
-        <img src="img/books.jpg" width="344" height="524" alt="Books printed by Adlard, including local history titles and study manuals." fetchpriority="high">
-        <figcaption><b>Books</b></figcaption>
-      </figure>
-      <figure class="plate">
-        <img src="img/folders.jpg" width="344" height="524" alt="Presentation folder with printed company sheets.">
-        <figcaption><b>Presentation folders</b></figcaption>
-      </figure>
-      <figure class="plate">
-        <img src="img/stationery.jpg" width="344" height="524" alt="Letterheads, business cards and carbonless duplicate forms.">
-        <figcaption><b>Stationery &amp; forms</b></figcaption>
-      </figure>
-      <figure class="plate">
-        <img src="img/leaflets.jpg" width="344" height="524" alt="Printed leaflets and flyers.">
-        <figcaption><b>Leaflets &amp; flyers</b></figcaption>
-      </figure>
-    </div></div>
+  <section class="facts" aria-label="Key facts">
+    <div class="wrap facts-grid">
+      <div><strong>1970</strong><span>Family-run ever since</span></div>
+      <div><strong>40+ years</strong><span>Printing books</span></div>
+      <div><strong>Litho &amp; digital</strong><span>Short and long runs</span></div>
+      <div><strong>Mon–Fri</strong><span>9am to 5.30pm</span></div>
+    </div>
   </section>
 
   <section class="section" id="services" aria-labelledby="services-title">
@@ -134,6 +128,33 @@
           <p>We collate, drill, bind, fold, staple and insert, so your print arrives ready to use.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <section class="section section-rule" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="work-title">Recent work</h2>
+        <p>Customers have stayed with us since our early years in business. Quality print, reliability and going that extra mile is why.</p>
+      </header>
+      <div class="plates-grid">
+        <figure class="plate">
+          <img src="img/books.jpg" width="344" height="524" loading="lazy" alt="Books printed by Adlard, including local history titles and study manuals.">
+          <figcaption><b>Books</b></figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="img/folders.jpg" width="344" height="524" loading="lazy" alt="Presentation folder with printed company sheets.">
+          <figcaption><b>Presentation folders</b></figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="img/stationery.jpg" width="344" height="524" loading="lazy" alt="Letterheads, business cards and carbonless duplicate forms.">
+          <figcaption><b>Stationery &amp; forms</b></figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="img/leaflets.jpg" width="344" height="524" loading="lazy" alt="Printed leaflets and flyers.">
+          <figcaption><b>Leaflets &amp; flyers</b></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -206,8 +227,10 @@
 <footer class="site-footer">
   <div class="wrap foot">
     <p class="foot-mark">Adlard</p>
-    <p>&copy; 2026 Adlard Print &amp; Reprographics Limited · The Old School, Ruddington</p>
-    <p>Concept design by Valentijn de Grijff</p>
+    <div class="foot-meta">
+      <p>&copy; 2026 Adlard Print &amp; Reprographics Limited · The Old School, Ruddington</p>
+      <p>Concept design by Valentijn de Grijff · Building photo: Alan Murray-Rust, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a></p>
+    </div>
   </div>
 </footer>
 </body>
