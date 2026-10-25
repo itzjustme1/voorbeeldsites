@@ -46,6 +46,8 @@ T = {
         cta_h="Benieuwd hoe jouw website eruit kan zien?",
         cta_p="Stuur me de naam van je bedrijf of je huidige website, dan maak ik een gratis preview.",
         cta_btn="Mail Valentijn",
+        cmp=[("Gemaakt voor een groot scherm", "Piepkleine tekst, eerst inzoomen."), ("Gemaakt voor de telefoon", "Meteen leesbaar, knoppen om op te tikken.")],
+        cmp_alt="Dezelfde site twee keer op een telefoon: links de desktopversie die piepklein wordt weergegeven, rechts de mobiele versie.",
         note="Dit zijn conceptontwerpen, geen officiële websites van de genoemde bedrijven.",
     ),
     "en": dict(
@@ -81,6 +83,8 @@ T = {
         cta_h="Curious what your website could look like?",
         cta_p="Send me your business name or current website and I'll make you a free preview.",
         cta_btn="Email Valentijn",
+        cmp=[("Built for a desktop", "Tiny text, pinch to zoom first."), ("Built for the phone", "Readable right away, buttons you can tap.")],
+        cmp_alt="The same site twice on a phone: on the left the desktop version shown tiny, on the right the mobile version.",
         note="These are concept designs, not the official websites of the businesses shown.",
     ),
 }
@@ -169,16 +173,28 @@ def page(k):
         <p class="fine">{e(t['fine'])}</p>
       </div>
       <div class="hero-phones" aria-hidden="true">
-        <div class="phone back"><img src="{p}assets/pisa-ijs-phone.jpg" width="780" height="1688" alt="" fetchpriority="high"></div>
-        <div class="phone front"><img src="{p}assets/tom-walsh-flooring-phone.jpg" width="780" height="1688" alt="" fetchpriority="high"></div>
+        <div class="phone back"><div class="screen"><img src="{p}assets/pisa-ijs-phone-full.jpg" width="546" height="7894" alt=""></div></div>
+        <div class="phone front"><div class="screen"><img src="{p}assets/tom-walsh-flooring-phone-full.jpg" width="546" height="10050" alt="" fetchpriority="high"></div></div>
       </div>
     </div>
   </section>
 
   <section class="section alt" aria-labelledby="st-title">
     <div class="wrap statement">
-      <h2 id="st-title">{e(t['st_h'])}</h2>
-      <p>{e(t['st_p'])}</p>
+      <div>
+        <h2 id="st-title">{e(t['st_h'])}</h2>
+        <p>{e(t['st_p'])}</p>
+      </div>
+      <div class="compare" role="img" aria-label="{e(t['cmp_alt'])}">
+        <figure>
+          <div class="phone"><img src="{p}assets/pisa-ijs-desktop-on-phone.jpg" width="980" height="2121" alt="" loading="lazy" decoding="async"></div>
+          <figcaption><strong>{e(t['cmp'][0][0])}</strong>{e(t['cmp'][0][1])}</figcaption>
+        </figure>
+        <figure class="good">
+          <div class="phone"><img src="{p}assets/pisa-ijs-phone.jpg" width="780" height="1688" alt="" loading="lazy" decoding="async"></div>
+          <figcaption><strong>{e(t['cmp'][1][0])}</strong>{e(t['cmp'][1][1])}</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -219,14 +235,14 @@ def page(k):
     <div class="wrap">
       <h2 id="cta-title">{e(t['cta_h'])}</h2>
       <p>{e(t['cta_p'])}</p>
-      <a class="btn btn-light" href="{mailto}">{t['cta_btn']}</a><a class="mail" href="mailto:{MAIL}">{MAIL}</a>
+      <a class="btn btn-light" href="{mailto}">{t['cta_btn']}</a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>&copy; 2026 Valentijn de Grijff</p>
+    <p>&copy; 2026 Valentijn de Grijff · <a href="mailto:{MAIL}">{MAIL}</a></p>
     <p>{e(t['note'])}</p>
   </div>
 </footer>
