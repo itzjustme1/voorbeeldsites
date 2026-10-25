@@ -1,6 +1,7 @@
 // "Recent work" carousel: arrow buttons step one card, the counter follows scrolling (also by swipe).
-document.querySelectorAll("[data-carousel]").forEach(function (root) {
-  var track = root.querySelector(".carousel-track");
+document.querySelectorAll("[data-carousel]").forEach(function (box) {
+  var root = box.closest(".section") || box;
+  var track = box.querySelector(".carousel-track");
   var cards = track.querySelectorAll(".card");
   var prev = root.querySelector("[data-prev]");
   var next = root.querySelector("[data-next]");
