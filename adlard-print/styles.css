@@ -176,7 +176,7 @@ h3 { margin: 0 0 6px; font-size: 19px; line-height: 1.25; font-weight: 700; colo
   .btn-call { padding: 0 14px; font-size: 14px; min-height: 42px; }
   .lead { font-size: 18px; }
   .actions { flex-direction: column; }
-  .actions .btn { width: 100%; }
+  .actions .btn, .books .btn { width: 100%; }
   .section, .books, .contact { padding: 64px 0; }
   .facts b { font-size: 19px; }
   .facts-grid > div { padding: 18px 12px 18px 0; }
