@@ -145,9 +145,10 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   background-size: cover; background-position: center;
   background-blend-mode: multiply, luminosity;
 }
-/* The camera stays black and white: just the photo, made grey with a plain filter (no blend, so Safari-safe) */
-.duotone-camera { background-image: var(--photo); background-blend-mode: normal; background-position: 50% 45%; filter: grayscale(1) contrast(1.1); }
-#pasfoto .panel-media { background: var(--paper); }
+/* Camera, wheel and film reel stay black and white: just the photo, made grey with a plain filter (no blend, so Safari-safe) */
+.duotone-camera, .duotone-wheel, .duotone-reel { background-image: var(--photo); background-blend-mode: normal; filter: grayscale(1) contrast(1.1); }
+.duotone-camera { background-position: 50% 45%; }
+#pasfoto .panel-media, #rijbewijs .panel-media, #video .panel-media { background: var(--paper); }
 
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
 .status { font-weight: 700; display: flex; align-items: flex-start; gap: 10px; }
