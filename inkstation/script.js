@@ -52,6 +52,8 @@ function setMenu(open) {
   nav.classList.toggle("is-open", open);
   menuBtn.setAttribute("aria-expanded", String(open));
   menuBtn.textContent = open ? "Sluit" : "Menu";
+  // Lock the page behind the full-height menu so it can't scroll underneath.
+  document.documentElement.style.overflow = open ? "hidden" : "";
 }
 menuBtn.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
 nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });

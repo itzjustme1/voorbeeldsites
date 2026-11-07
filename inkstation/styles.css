@@ -116,7 +116,16 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .hero .lead { margin-bottom: 36px; color: var(--ink-2); }
 
 .hero-panel { position: relative; margin: 0; background: var(--magenta); overflow: hidden; }
-.hero-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(1.05); mix-blend-mode: multiply; }
+/* Magenta duotone in one element: the photo is made grey (luminosity over white), then multiplied with magenta.
+   background-blend-mode stays inside the element, so Safari renders it the same as Chrome. */
+.duotone {
+  position: absolute; inset: 0;
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--magenta), var(--magenta)), var(--photo);
+  background-size: cover; background-position: center;
+  background-blend-mode: multiply, luminosity;
+}
+.duotone-camera { background-position: 50% 45%; }
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
 .status { font-weight: 700; display: flex; align-items: center; gap: 10px; }
 .status::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--ink-2); }
@@ -148,8 +157,8 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .ink { background: var(--magenta); color: var(--paper); padding: var(--section) 0; }
 .ink-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center; }
 .ink h2 { color: var(--ink); margin-bottom: 28px; }
-.ink-photo { margin: 0; }
-.ink-photo img { width: 100%; filter: grayscale(1) contrast(1.2); mix-blend-mode: multiply; }
+.ink-photo { margin: 0; background: var(--paper); aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 8%; }
+.ink-photo img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1) contrast(1.2); }
 .ink-cols { list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .ink-cols li { border-top: 3px solid var(--ink); padding-top: 22px; }
 .ink-cols h3 { color: var(--ink); }
@@ -158,7 +167,6 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .pasfoto-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 80px; align-items: center; }
 /* Camera on magenta, with the passport-photo format pinned on top like a print proof */
 .pasfoto-media { position: relative; margin: 0 0 40px; background: var(--magenta); aspect-ratio: 4 / 5; }
-.pasfoto-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: grayscale(1) contrast(1.2); mix-blend-mode: multiply; }
 .spec { position: absolute; right: -32px; bottom: -40px; width: 46%; background: var(--paper); padding: 20px 20px 16px; }
 .spec svg { width: 100%; height: auto; overflow: visible; }
 .spec-crop path, .spec-dim path { fill: none; stroke: var(--ink); stroke-width: 3; }
@@ -194,11 +202,14 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .flow li { padding: 16px 16px 0 0; font-size: var(--fs-ui); color: var(--ink-2); }
 .flow li + li { padding-left: 16px; border-left: 1px solid var(--line); }
 .flow b { display: block; color: var(--ink); font-size: var(--fs-body); }
-.video-media { position: relative; aspect-ratio: 1 / 1; }
-.vm { position: absolute; margin: 0; }
-.vm img { width: 100%; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
-.vm-tape { left: 0; top: 4%; width: 82%; }
-.vm-reel { right: 0; bottom: 0; width: 56%; }
+.video-media { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.vm { margin: 0; }
+.vm-img { background: var(--paper); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: 12%; border-bottom: 6px solid var(--magenta); }
+.vm img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1) contrast(1.15); }
+.vm figcaption { margin-top: 14px; font-weight: 700; }
+.vm figcaption span { display: block; font-weight: 400; color: var(--ink-2); font-size: var(--fs-ui); }
+.vm-reel { margin-top: 72px; }
+.vm-tape .vm-img { padding: 5%; }
 
 /* Reviews */
 .reviews-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 80px; align-items: start; }
@@ -246,13 +257,16 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
     min-width: 84px; justify-content: center;
   }
   .btn-call { margin-left: auto; }
+  .menu-btn[aria-expanded="true"] { background: var(--ink); color: var(--paper); }
   .nav {
-    display: none; position: absolute; left: 0; right: 0; top: 100%;
-    flex-direction: column; gap: 0; margin: 0; padding: 8px var(--gutter) 20px;
-    background: var(--paper); border-bottom: 1px solid var(--line); font-size: var(--fs-lead);
+    display: none; position: absolute; left: 0; right: 0; top: 100%; height: 100dvh;
+    flex-direction: column; gap: 0; margin: 0; padding: 12px var(--gutter) 40px;
+    background: var(--paper); border-top: 1px solid var(--line);
+    font-size: var(--fs-h2); font-weight: 800; font-stretch: 125%; text-transform: uppercase; line-height: 1;
   }
   .nav.is-open { display: flex; }
-  .nav a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .nav a { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .nav a:last-child { color: var(--magenta); }
   .hero-grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .hero-copy { padding: 64px var(--gutter) 64px; }
   .hero-panel { min-height: 420px; }
@@ -260,7 +274,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   .ink-photo { max-width: 520px; }
   .ink-cols, .steps { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 56px; }
   .pasfoto-media { max-width: 520px; margin-right: 32px; }
-  .video-media { max-width: 520px; }
+  .video-media { max-width: 560px; }
   .foot-meta { text-align: left; }
 }
 @media (max-width: 600px) {
@@ -285,6 +299,12 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   .hours { max-width: none; }
   .quote p { font-size: var(--fs-h3); }
   .pasfoto .quote { padding-left: 18px; }
+  .steps li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 8px; }
+  .step-n { grid-row: span 2; margin: 0; font-size: 44px; }
+  .ink-cols, .steps { gap: 28px; margin-top: 44px; }
+  .video-media { gap: 12px; }
+  .vm-reel { margin-top: 40px; }
+  .vm figcaption { margin-top: 10px; }
   .pasfoto-media { margin-right: 16px; }
   .spec { right: -16px; bottom: -32px; width: 54%; padding: 14px 14px 12px; }
 }

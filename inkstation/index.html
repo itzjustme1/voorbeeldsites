@@ -19,8 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
-<script src="script.js?v=3" defer></script>
+<link rel="stylesheet" href="styles.css?v=6">
+<script src="script.js?v=4" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Hours as listed on Google Maps (7 Nov 2026). -->
 <script type="application/ld+json">
 {
@@ -51,7 +51,7 @@
   - HP_Inkjet_Black_Print_Cartridge_21.jpg, MarcoTangerino, public domain
   - VHS_videocassette_-_front.jpg, LoMit, CC BY-SA 4.0
   - Super-8-mm-film-on-a-spool-02.jpg, CEphoto, Uwe Aranas, CC BY-SA 3.0
-  All photos are shown in greyscale with a multiply blend (a CSS duotone), not edited files.
+  Hero and camera photos get a magenta duotone via background-blend-mode (works in Safari, unlike mix-blend-mode on a filtered img); product photos sit on white tiles. No edited files.
 -->
 </head>
 <body>
@@ -93,7 +93,7 @@
         </div>
       </div>
       <figure class="hero-panel">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Moving_Water_and_Ink_%28Unsplash%29.jpg/1280px-Moving_Water_and_Ink_%28Unsplash%29.jpg" width="1280" height="1657" alt="" fetchpriority="high">
+        <div class="duotone" style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Moving_Water_and_Ink_%28Unsplash%29.jpg/1280px-Moving_Water_and_Ink_%28Unsplash%29.jpg')"></div>
         <div class="ticket">
           <p class="status" data-status>Ma 13:00–17:30 · di–vr 10:00–17:30</p>
           <p class="rating"><b>4,5</b> op Google, uit 110 reviews</p>
@@ -125,7 +125,7 @@
   <section class="section pasfoto" id="pasfoto" aria-labelledby="pasfoto-title">
     <div class="wrap pasfoto-grid">
       <figure class="pasfoto-media">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg" width="1280" height="960" loading="lazy" alt="Een fotocamera, van voren gezien.">
+        <div class="duotone duotone-camera" role="img" aria-label="Een fotocamera, van voren gezien." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg')"></div>
         <div class="spec">
         <!-- The official Dutch passport photo format, drawn as a print proof with crop marks. -->
         <svg viewBox="0 0 400 480" role="img" aria-labelledby="spec-title">
@@ -185,10 +185,12 @@
       </div>
       <div class="video-media">
         <figure class="vm vm-tape">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/VHS_videocassette_-_front.jpg/960px-VHS_videocassette_-_front.jpg" width="960" height="640" loading="lazy" alt="Een VHS-videoband.">
+          <div class="vm-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/VHS_videocassette_-_front.jpg/960px-VHS_videocassette_-_front.jpg" width="960" height="640" loading="lazy" alt="Een VHS-videoband."></div>
+          <figcaption>Videobanden<span>naar USB of dvd</span></figcaption>
         </figure>
         <figure class="vm vm-reel">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/960px-Super-8-mm-film-on-a-spool-02.jpg" width="960" height="960" loading="lazy" alt="Een spoel met Super 8-film.">
+          <div class="vm-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/960px-Super-8-mm-film-on-a-spool-02.jpg" width="960" height="960" loading="lazy" alt="Een spoel met Super 8-film."></div>
+          <figcaption>Super 8-films<span>naar USB of dvd</span></figcaption>
         </figure>
       </div>
     </div>
