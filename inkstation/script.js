@@ -60,3 +60,40 @@ nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); menuBtn.focus(); }
 });
+
+// Palette picker, only for previewing colours: shown when the URL contains ?kleuren.
+var PALETTES = [
+  { id: "magenta", name: "Magenta", swatch: "#e4007c" },
+  { id: "cyaan", name: "Cyaan", swatch: "#00a3e0" },
+  { id: "geel", name: "Geel", swatch: "#ffd500" },
+  { id: "oranje", name: "Oranje", swatch: "#ff5b14" },
+  { id: "kobalt", name: "Kobalt", swatch: "#2b44ff" }
+];
+var params = new URLSearchParams(location.search);
+if (params.has("kleuren")) {
+  var picker = document.createElement("div");
+  picker.className = "picker";
+  picker.setAttribute("role", "group");
+  picker.setAttribute("aria-label", "Kies een kleur");
+  var current = document.documentElement.getAttribute("data-kleur") || "magenta";
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  PALETTES.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button";
+    var label = document.createElement("span");
+    label.textContent = p.name;
+    b.appendChild(label);
+    b.setAttribute("aria-label", p.name);
+    b.style.setProperty("--swatch", p.swatch);
+    b.setAttribute("aria-pressed", String(p.id === current));
+    b.addEventListener("click", function () {
+      if (p.id === "magenta") document.documentElement.removeAttribute("data-kleur");
+      else document.documentElement.setAttribute("data-kleur", p.id);
+      try { localStorage.setItem("inkstation-kleur", p.id); } catch (e) {}
+      if (themeMeta) themeMeta.setAttribute("content", p.swatch);
+      picker.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    });
+    picker.appendChild(b);
+  });
+  document.body.appendChild(picker);
+}

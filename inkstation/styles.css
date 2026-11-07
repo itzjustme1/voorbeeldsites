@@ -13,6 +13,20 @@
   --cyan: #009fe3;
   --yellow: #ffed00;
   --on-ink: #c9cad0;
+
+  /* The one accent colour. Each role gets its own token so a palette can swap colour without breaking contrast:
+     --accent: colour blocks and shapes. --on-accent / --on-accent-head: text on those blocks.
+     --accent-text: accent as large text on paper. --accent-text-sm: small accent text on the tint ground.
+     --accent-on-ink: accent text and shapes on black. --accent-mark: highlighter under accent words (only when
+     the accent itself is too light to read on paper). */
+  --accent: var(--magenta);
+  --accent-deep: var(--magenta-deep);
+  --on-accent: var(--paper);
+  --on-accent-head: var(--ink);
+  --accent-text: var(--magenta);
+  --accent-text-sm: var(--magenta-deep);
+  --accent-on-ink: var(--magenta);
+  --accent-mark: transparent;
   --line-dark: #2c2d33;
 
   --fs-sm: 13px;
@@ -46,7 +60,7 @@ img, svg { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; }
 p { margin: 0; }
-:focus-visible { outline: 3px solid var(--magenta); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .skip { position: absolute; left: 16px; top: -60px; z-index: 30; background: var(--ink); color: var(--paper); padding: 12px 18px; text-decoration: none; font-weight: 700; }
@@ -75,20 +89,20 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   font: 700 var(--fs-ui)/1 "Archivo", system-ui, sans-serif; text-decoration: none; white-space: nowrap;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.btn-magenta { background: var(--magenta); color: var(--paper); }
-.btn-magenta:hover { background: var(--magenta-deep); }
+.btn-accent { background: var(--accent); color: var(--on-accent); }
+.btn-accent:hover { background: var(--accent-deep); }
 .btn-ink { background: var(--ink); color: var(--paper); }
-.btn-ink:hover { background: var(--magenta); }
+.btn-ink:hover { background: var(--accent); color: var(--on-accent); }
 .btn-line { color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 .btn-line:hover { background: var(--ink); color: var(--paper); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.text-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--magenta); transition: color var(--dur) var(--ease); }
-.text-link:hover { color: var(--magenta); }
+.text-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-text); transition: color var(--dur) var(--ease); }
+.text-link:hover { color: var(--accent-text); }
 
 /* Wordmark: a dotless i whose dot is an ink drop */
 .logo { display: inline-flex; align-items: baseline; text-decoration: none; font-weight: 800; font-stretch: 125%; font-size: 26px; letter-spacing: -.02em; line-height: 1; }
 .logo-i { position: relative; }
-.logo-drop { position: absolute; left: 50%; top: -.2em; width: .27em; height: auto; transform: translateX(-50%); fill: var(--magenta); }
+.logo-drop { position: absolute; left: 50%; top: -.2em; width: .27em; height: auto; transform: translateX(-50%); fill: var(--accent); }
 .logo-light { color: var(--paper); }
 
 /* Header */
@@ -96,7 +110,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .bar { display: flex; align-items: center; gap: 32px; height: 80px; }
 .nav { display: flex; gap: 28px; margin-left: auto; font-size: var(--fs-ui); font-weight: 700; }
 .nav a { text-decoration: none; transition: color var(--dur) var(--ease); }
-.nav a:hover { color: var(--magenta); }
+.nav a:hover { color: var(--accent-text); }
 .btn-call { min-height: 44px; padding: 0 20px; }
 .call-short { display: none; }
 .menu-btn { display: none; }
@@ -110,19 +124,24 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   padding: 88px 56px 96px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
 }
 .where { font-size: var(--fs-ui); font-weight: 700; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
-.where::before { content: ""; width: 12px; height: 12px; background: var(--magenta); }
+.where::before { content: ""; width: 12px; height: 12px; background: var(--accent); }
 .hero h1 { font-size: var(--fs-h1); margin-bottom: 36px; }
 .hero h1 .line { display: block; }
-.hero h1 .line:last-child { color: var(--magenta); }
+/* Accent words: coloured, plus a highlighter stroke that only shows when --accent-mark is set */
+.hero h1 .line:last-child, .soft {
+  color: var(--accent-text);
+  text-decoration: underline; text-decoration-color: var(--accent-mark); text-decoration-thickness: .3em;
+  text-underline-offset: -.14em; text-decoration-skip-ink: none;
+}
 .hero .lead { margin-bottom: 36px; color: var(--ink-2); }
 
-.hero-panel { position: relative; margin: 0; background: var(--magenta); overflow: hidden; }
-/* Magenta duotone in one element: the photo is made grey (luminosity over white), then multiplied with magenta.
+.hero-panel { position: relative; margin: 0; background: var(--accent); overflow: hidden; }
+/* Accent duotone in one element: the photo is made grey (luminosity over white), then multiplied with the accent.
    background-blend-mode stays inside the element, so Safari renders it the same as Chrome. */
 .duotone {
   position: absolute; inset: 0;
   background-color: var(--paper);
-  background-image: linear-gradient(var(--magenta), var(--magenta)), var(--photo);
+  background-image: linear-gradient(var(--accent), var(--accent)), var(--photo);
   background-size: cover; background-position: center;
   background-blend-mode: multiply, luminosity;
 }
@@ -130,7 +149,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
 .status { font-weight: 700; display: flex; align-items: flex-start; gap: 10px; }
 .status::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: .5em; background: var(--ink-2); }
-.status.is-open::before { background: var(--magenta); }
+.status.is-open::before { background: var(--accent); }
 .rating { color: var(--ink-2); font-size: var(--fs-ui); }
 .rating b { color: var(--ink); }
 
@@ -154,46 +173,45 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .section { padding: var(--section) 0; }
 .tint { background: var(--tint); }
 
-/* Ink: the one full magenta block */
-.ink { background: var(--magenta); color: var(--paper); padding: var(--section) 0; }
+/* Ink: the one full accent-colour block */
+.ink { background: var(--accent); color: var(--on-accent); padding: var(--section) 0; }
 .ink-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center; }
-.ink h2 { color: var(--ink); margin-bottom: 28px; }
+.ink h2 { color: var(--on-accent-head); margin-bottom: 28px; }
 .ink-photo { margin: 0; background: var(--paper); aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 8%; }
 .ink-photo img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1) contrast(1.2); }
 .ink-cols { list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.ink-cols li { border-top: 3px solid var(--ink); padding-top: 22px; }
-.ink-cols h3 { color: var(--ink); }
+.ink-cols li { border-top: 3px solid var(--on-accent-head); padding-top: 22px; }
+.ink-cols h3 { color: var(--on-accent-head); }
 
 /* Pasfoto */
 .pasfoto-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 80px; align-items: center; }
-/* Camera on magenta, with the passport-photo format pinned on top like a print proof */
-.pasfoto-media { position: relative; margin: 0 0 40px; background: var(--magenta); aspect-ratio: 4 / 5; }
+/* Camera on the accent colour, with the passport-photo format pinned on top like a print proof */
+.pasfoto-media { position: relative; margin: 0 0 40px; background: var(--accent); aspect-ratio: 4 / 5; }
 .spec { position: absolute; right: -32px; bottom: -40px; width: 46%; background: var(--paper); padding: 20px 20px 16px; }
 .spec svg { width: 100%; height: auto; overflow: visible; }
 .spec-crop path, .spec-dim path { fill: none; stroke: var(--ink); stroke-width: 3; }
-.spec-frame { fill: var(--tint); stroke: var(--magenta); stroke-width: 8; }
+.spec-frame { fill: var(--tint); stroke: var(--accent-text); stroke-width: 8; }
 .spec-face { fill: none; stroke: var(--ink-2); stroke-width: 3; stroke-dasharray: 10 10; }
 .spec-label { font: 700 30px "Archivo", sans-serif; fill: var(--ink); }
 .spec-cap { margin-top: 12px; color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.4; }
 .pasfoto h2 { margin-bottom: 28px; }
-.soft { color: var(--magenta); }
 .pasfoto .lead { color: var(--ink-2); margin-bottom: 44px; }
 .quote { margin: 0; }
 .quote p { font-size: var(--fs-h3); line-height: 1.35; font-weight: 700; max-width: 26em; }
 .quote footer { margin-top: 12px; color: var(--ink-2); font-size: var(--fs-ui); }
-.pasfoto .quote { border-left: 6px solid var(--magenta); padding-left: 24px; }
+.pasfoto .quote { border-left: 6px solid var(--accent); padding-left: 24px; }
 
 /* Rijbewijs: ink block */
 .dark { background: var(--ink); color: var(--paper); }
-.dark h2 em { font-style: normal; color: var(--magenta); }
+.dark h2 em { font-style: normal; color: var(--accent-on-ink); }
 .dark-lead { color: var(--on-ink); margin-top: 28px; }
 .steps { list-style: none; margin: 72px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .steps li { border-top: 3px solid var(--paper); padding-top: 22px; }
-.step-n { display: block; font-size: var(--fs-h2); font-weight: 800; font-stretch: 125%; line-height: 1; color: var(--magenta); margin-bottom: 20px; }
+.step-n { display: block; font-size: var(--fs-h2); font-weight: 800; font-stretch: 125%; line-height: 1; color: var(--accent-on-ink); margin-bottom: 20px; }
 .steps p { color: var(--on-ink); }
 .note { margin-top: 48px; }
-.note a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--magenta); transition: color var(--dur) var(--ease); }
-.note a:hover { color: var(--magenta); }
+.note a { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-on-ink); transition: color var(--dur) var(--ease); }
+.note a:hover { color: var(--accent-on-ink); }
 
 /* Video & film */
 .video-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 72px; align-items: center; }
@@ -205,7 +223,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .flow b { display: block; color: var(--ink); font-size: var(--fs-body); }
 .video-media { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
 .vm { margin: 0; }
-.vm-img { background: var(--paper); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: 12%; border-bottom: 6px solid var(--magenta); }
+.vm-img { background: var(--paper); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: 12%; border-bottom: 6px solid var(--accent); }
 .vm img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1) contrast(1.15); }
 .vm figcaption { margin-top: 14px; font-weight: 700; }
 .vm figcaption span { display: block; font-weight: 400; color: var(--ink-2); font-size: var(--fs-ui); }
@@ -214,16 +232,16 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 
 /* Reviews */
 .reviews-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 80px; align-items: start; }
-.big { font-size: clamp(120px, 15vw, 200px); line-height: .8; font-weight: 800; font-stretch: 125%; letter-spacing: -.04em; color: var(--magenta); }
+.big { font-size: clamp(120px, 15vw, 200px); line-height: .8; font-weight: 800; font-stretch: 125%; letter-spacing: -.04em; color: var(--accent-on-ink); }
 .score-title { margin: 28px 0 20px; font-size: var(--fs-h3); line-height: 1.3; font-weight: 700; max-width: 16em; }
-/* Reviews sit on ink: magenta score, white quotes, each opened by one big magenta quote mark */
+/* Reviews sit on ink: accent score, white quotes, each opened by one big accent quote mark */
 .reviews .score-title { color: var(--paper); }
-.reviews .text-link { color: var(--paper); }
-.reviews .text-link:hover { color: var(--magenta); }
+.reviews .text-link { color: var(--paper); text-decoration-color: var(--accent-on-ink); }
+.reviews .text-link:hover { color: var(--accent-on-ink); }
 .quotes { display: grid; }
 .quotes .quote { padding: 32px 0; border-top: 1px solid var(--line-dark); }
 .quotes .quote:first-child { padding-top: 0; border-top: 0; }
-.quotes .quote p::before { content: "“"; display: block; height: .5em; margin-bottom: 12px; font-size: var(--fs-h2); font-weight: 800; font-stretch: 125%; line-height: 1; color: var(--magenta); }
+.quotes .quote p::before { content: "“"; display: block; height: .5em; margin-bottom: 12px; font-size: var(--fs-h2); font-weight: 800; font-stretch: 125%; line-height: 1; color: var(--accent-on-ink); }
 .quotes .quote footer { color: var(--on-ink); }
 
 /* Visit */
@@ -231,26 +249,64 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .visit h2 { margin-bottom: 20px; }
 .status-line { font-weight: 700; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 32px; }
 .status-line::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: .5em; background: var(--ink-2); }
-.status-line.is-open::before { background: var(--magenta); }
+.status-line.is-open::before { background: var(--accent); }
 .details { margin: 0; border-top: 3px solid var(--ink); }
 .details > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .details dt { font-weight: 700; }
 .details dd { margin: 0; overflow-wrap: anywhere; }
-.details a { text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--magenta); }
+.details a { text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-text); }
 .hours { border-collapse: collapse; width: 100%; max-width: 300px; }
 .hours th, .hours td { padding: 2px 0; text-align: left; font-weight: 400; }
 .hours td { text-align: right; font-variant-numeric: tabular-nums; }
-/* Deep magenta: plain magenta is only 4.1:1 on the tint ground at this size */
-.hours tr.is-today th, .hours tr.is-today td { font-weight: 700; color: var(--magenta-deep); }
+/* Small text on the tint ground needs a darker accent (plain magenta is only 4.1:1 there) */
+.hours tr.is-today th, .hours tr.is-today td { font-weight: 700; color: var(--accent-text-sm); }
 .extra { margin-top: 20px; color: var(--ink-2); }
 .map { position: relative; aspect-ratio: 1 / 1; background: var(--line); margin-bottom: 20px; }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
-.map-pin { position: absolute; left: 50%; top: 50%; width: 30px; transform: translate(-50%, -100%); fill: var(--magenta); pointer-events: none; filter: drop-shadow(0 0 0 var(--paper)); }
+.map-pin { position: absolute; left: 50%; top: 50%; width: 30px; transform: translate(-50%, -100%); fill: var(--accent); pointer-events: none; filter: drop-shadow(0 0 0 var(--paper)); }
 
 /* Footer */
 .site-foot { background: var(--ink); color: var(--on-ink); }
 .foot { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px; padding-top: 48px; padding-bottom: 56px; font-size: var(--fs-sm); }
 .foot-meta { display: grid; gap: 6px; max-width: 640px; text-align: right; }
+
+/* Alternative palettes, picked with ?kleur=… (see script.js). Contrast per role checked against WCAG AA. */
+html[data-kleur="cyaan"] {
+  --accent: #00a3e0; --accent-deep: #0089bd; --on-accent: var(--ink); --on-accent-head: var(--ink);
+  --accent-text: #0079b0; --accent-text-sm: #006a9a; --accent-on-ink: #00a3e0;
+}
+html[data-kleur="geel"] {
+  --accent: #ffd500; --accent-deep: #f2c200; --on-accent: var(--ink); --on-accent-head: var(--ink);
+  --accent-text: var(--ink); --accent-text-sm: var(--ink); --accent-on-ink: #ffd500; --accent-mark: #ffd500;
+}
+html[data-kleur="oranje"] {
+  --accent: #ff5b14; --accent-deep: #ec4a05; --on-accent: var(--ink); --on-accent-head: var(--ink);
+  --accent-text: #d94400; --accent-text-sm: #b83a00; --accent-on-ink: #ff5b14;
+}
+html[data-kleur="kobalt"] {
+  --accent: #2b44ff; --accent-deep: #1f33d6; --on-accent: var(--paper); --on-accent-head: var(--paper);
+  --accent-text: #2b44ff; --accent-text-sm: #2b44ff; --accent-on-ink: #8392ff;
+}
+
+/* Colour picker for previewing palettes. Only shown with ?kleuren in the URL, never for normal visitors. */
+.picker {
+  position: fixed; left: 50%; bottom: 16px; z-index: 40; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: var(--pill);
+  background: var(--ink); color: var(--paper); box-shadow: 0 8px 24px rgba(17, 17, 20, .3);
+  max-width: calc(100vw - 24px); overflow-x: auto;
+}
+.picker button {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px 0 10px; border: 0; border-radius: var(--pill);
+  background: transparent; color: var(--paper); font: 700 var(--fs-sm)/1 "Archivo", system-ui, sans-serif; cursor: pointer; white-space: nowrap;
+}
+.picker button::before { content: ""; width: 16px; height: 16px; border-radius: var(--pill); background: var(--swatch); }
+.picker button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+@media (max-width: 600px) {
+  /* Swatches only on phones so all five fit */
+  .picker button { padding: 0 12px; }
+  .picker button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .picker button::before { width: 22px; height: 22px; }
+}
 
 @media (max-width: 1080px) {
   .nav { gap: 20px; }
@@ -273,7 +329,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
   }
   .nav.is-open { display: flex; }
   .nav a { padding: 18px 0; border-bottom: 1px solid var(--line); }
-  .nav a:last-child { color: var(--magenta); }
+  .nav a:last-child { color: var(--accent-text); text-decoration: underline; text-decoration-color: var(--accent-mark); text-decoration-thickness: .3em; text-underline-offset: -.14em; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .hero-copy { padding: 64px var(--gutter) 64px; }
   .hero-panel { min-height: 420px; }
