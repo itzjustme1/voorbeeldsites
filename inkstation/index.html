@@ -27,8 +27,8 @@
     document.documentElement.setAttribute("data-kleur", k || "oranje");
   })();
 </script>
-<link rel="stylesheet" href="styles.css?v=14">
-<script src="script.js?v=12" defer></script>
+<link rel="stylesheet" href="styles.css?v=17">
+<script src="script.js?v=15" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Hours as listed on Google Maps (7 Nov 2026). -->
 <script type="application/ld+json">
 {
@@ -56,8 +56,8 @@
   Photos: Wikimedia Commons, hotlinked for this concept. Download them locally before going live.
   - Moving_Water_and_Ink_(Unsplash).jpg, Adrien Ledoux, CC0
   - Canon_EOS_R5_Mark_II_(front,_no_body_cap).jpg, D. Benjamin Miller, CC0
+  - Car_interior_during_the_daytime_(Unsplash).jpg, Pietro De Grandi, CC0
   - HP_Inkjet_Black_Print_Cartridge_21.jpg, MarcoTangerino, public domain
-  - VHS_videocassette_-_front.jpg, LoMit, CC BY-SA 4.0
   - Super-8-mm-film-on-a-spool-02.jpg, CEphoto, Uwe Aranas, CC BY-SA 3.0
   Hero and camera photos get a magenta duotone via background-blend-mode (works in Safari, unlike mix-blend-mode on a filtered img); product photos sit on white tiles. No edited files.
 -->
@@ -111,159 +111,102 @@
     <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   </section>
 
-  <section class="ink" id="inkt" aria-labelledby="inkt-title">
-    <div class="wrap ink-grid">
-      <div class="ink-copy">
-        <h2 class="display" id="inkt-title">Inkt voor minder.</h2>
-        <p class="lead">Inktpatronen en lasertoners voor een hele scherpe prijs, bijna altijd goedkoper dan de grote webshops. Gewoon in de winkel, zonder verzendkosten.</p>
+  <!-- Below the hero: one screen per service, built like the hero (copy + full-height panel), alternating sides. -->
+  <section class="panel" id="inkt" aria-labelledby="inkt-title">
+    <div class="panel-copy">
+      <p class="where">Inkt &amp; toner</p>
+      <h2 class="display panel-title" id="inkt-title" style="--em: 5.52"><span class="line">Inkt</span><span class="line">voor</span><span class="line">minder.</span></h2>
+      <p class="lead">Inktpatronen en lasertoners, bijna altijd goedkoper dan de grote webshops. Lege Canon- of HP-patroon? Die vult Rens hier opnieuw.</p>
+      <div class="actions">
+        <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
+        <a class="btn btn-line" href="#langskomen">Openingstijden &amp; route</a>
       </div>
-      <figure class="ink-photo">
-        <div class="duotone" role="img" aria-label="Twee zwarte inktpatronen voor een inkjetprinter." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/HP_Inkjet_Black_Print_Cartridge_21.jpg/1280px-HP_Inkjet_Black_Print_Cartridge_21.jpg')"></div>
-      </figure>
     </div>
-    <div class="wrap">
-      <ul class="ink-cols">
-        <li><h3>Inktpatronen</h3><p>Voor je inkjetprinter thuis. Tip: neem je lege patroon mee, dan weet je zeker dat je de goede hebt.</p></li>
-        <li><h3>Lasertoners</h3><p>Ook voor laserprinters, thuis of op het werk. Vraag gerust of jouw toner er is.</p></li>
-        <li><h3>Refill van Canon en HP</h3><p>Lege Canon- of HP-patroon? Laat hem hier opnieuw vullen. Voordeliger, en je gooit niets weg.</p></li>
+    <figure class="panel-media">
+      <div class="duotone" role="img" aria-label="Twee zwarte inktpatronen." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/HP_Inkjet_Black_Print_Cartridge_21.jpg/1280px-HP_Inkjet_Black_Print_Cartridge_21.jpg')"></div>
+    </figure>
+  </section>
+
+  <section class="panel panel-flip" id="pasfoto" aria-labelledby="pasfoto-title">
+    <div class="panel-copy">
+      <p class="where">Pasfoto's &amp; portretten</p>
+      <h2 class="display panel-title" id="pasfoto-title" style="--em: 7.58"><span class="line">Pasfoto's.</span><span class="line">Ook voor</span><span class="line">baby's.</span></h2>
+      <p class="lead">Voor je paspoort, ID-kaart of rijbewijs, meteen goed. Rens neemt er de tijd voor, ook met de kleinsten.</p>
+      <p class="panel-quote">“Voor de beste pasfoto's van de regio.” <span>Peter, op Google</span></p>
+      <div class="actions">
+        <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
+      </div>
+    </div>
+    <figure class="panel-media">
+      <div class="duotone duotone-camera" role="img" aria-label="Een fotocamera, van voren gezien." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg')"></div>
+    </figure>
+  </section>
+
+  <section class="panel" id="rijbewijs" aria-labelledby="rijbewijs-title">
+    <div class="panel-copy">
+      <p class="where">Rijbewijs verlengen</p>
+      <h2 class="display panel-title" id="rijbewijs-title" style="--em: 8.42"><span class="line">Rijbewijs</span><span class="line">verlengen.</span><span class="line">Begin hier.</span></h2>
+      <p class="lead">Rens maakt je pasfoto en neemt je handtekening digitaal af. Daarna verleng je online bij de RDW en haal je je rijbewijs op bij de gemeente.</p>
+      <div class="actions">
+        <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
+        <a class="btn btn-line" href="https://www.rdw.nl/het-rijbewijs/aanvragen-of-verlengen/rijbewijs-online-verlengen" rel="noopener" target="_blank">Hoe het werkt (RDW)</a>
+      </div>
+    </div>
+    <figure class="panel-media">
+      <div class="duotone duotone-wheel" role="img" aria-label="Het stuur van een auto." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Car_interior_during_the_daytime_%28Unsplash%29.jpg/1280px-Car_interior_during_the_daytime_%28Unsplash%29.jpg')"></div>
+    </figure>
+  </section>
+
+  <section class="panel panel-flip" id="video" aria-labelledby="video-title">
+    <div class="panel-copy">
+      <p class="where">Video &amp; film digitaliseren</p>
+      <h2 class="display panel-title" id="video-title" style="--em: 5.84"><span class="line">Oude</span><span class="line">video's?</span><span class="line">Op USB.</span></h2>
+      <p class="lead">Videobanden en Super 8-films naar USB of dvd. Inkstation is officieel inleverpunt van Scanpaleis: hier brengen, hier weer ophalen.</p>
+      <div class="actions">
+        <a class="btn btn-accent" href="https://scanpaleis.nl/media/video-digitaliseren/" rel="noopener" target="_blank">Prijzen bij Scanpaleis</a>
+      </div>
+    </div>
+    <figure class="panel-media">
+      <div class="duotone duotone-reel" role="img" aria-label="Een spoel met Super 8-film." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/1280px-Super-8-mm-film-on-a-spool-02.jpg')"></div>
+    </figure>
+  </section>
+
+  <section class="panel" id="reviews" aria-labelledby="reviews-title">
+    <div class="panel-copy">
+      <p class="where">Reviews op Google</p>
+      <h2 class="display panel-title" id="reviews-title" style="--em: 8.93"><span class="line">Geduldig.</span><span class="line">Vakman.</span><span class="line">Top service.</span></h2>
+      <ul class="said">
+        <li>“De meneer was enorm geduldig en nam alle tijd!” <span>Celina</span></li>
+        <li>“Rens is een vakman.” <span>Peter</span></li>
+        <li>“Ook voor baby's kan je gewoon terecht. Top service.” <span>Naw</span></li>
       </ul>
     </div>
-  </section>
-
-  <div class="band" aria-hidden="true">
-    <p><span>Inktpatronen</span> <span class="o">Toners</span> <span>Refill</span> <span class="o">Pasfoto's</span> <span>Rijbewijs</span> <span class="o">Video &amp; film</span> <span>Inktpatronen</span> <span class="o">Toners</span></p>
-  </div>
-
-  <section class="section pasfoto" id="pasfoto" aria-labelledby="pasfoto-title">
-    <div class="wrap pasfoto-grid">
-      <figure class="pasfoto-media">
-        <div class="duotone duotone-camera" role="img" aria-label="Een fotocamera, van voren gezien." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg')"></div>
-        <div class="spec">
-        <!-- The official Dutch passport photo format, drawn as a print proof with crop marks. -->
-        <svg viewBox="0 0 400 480" role="img" aria-labelledby="spec-title">
-          <title id="spec-title">Formaat van een pasfoto: 35 bij 45 millimeter.</title>
-          <g class="spec-crop">
-            <path d="M60 40v24M36 64h24M340 40v24M340 64h24M60 440v-24M36 416h24M340 440v-24M340 416h24"/>
-          </g>
-          <rect class="spec-frame" x="60" y="64" width="280" height="352"/>
-          <ellipse class="spec-face" cx="200" cy="222" rx="74" ry="102"/>
-          <g class="spec-dim">
-            <path d="M60 456h280M60 450v12M340 450v12"/>
-            <path d="M376 64v352M370 64h12M370 416h12"/>
-          </g>
-          <text class="spec-label" x="200" y="478" text-anchor="middle">35 mm</text>
-          <text class="spec-label" x="392" y="246" text-anchor="middle" transform="rotate(90 392 240)">45 mm</text>
-        </svg>
-        <p class="spec-cap">35 × 45 mm, volgens de eisen van de overheid.</p>
-        </div>
-      </figure>
-      <div class="pasfoto-copy">
-        <h2 class="display" id="pasfoto-title">Pasfoto's. <span class="soft">Ook voor baby's.</span></h2>
-        <p class="lead">Voor je paspoort, ID-kaart of rijbewijs, meteen goed. Ook baby's en kleine kinderen zijn welkom: Rens neemt er de tijd voor. Liever een mooi portret? Dat kan ook.</p>
-        <blockquote class="quote">
-          <p>“Voor de beste pasfoto's van de regio. Zeer vriendelijk geholpen en Rens is een vakman.”</p>
-          <footer>Peter, review op Google</footer>
-        </blockquote>
-      </div>
+    <div class="panel-media panel-score">
+      <p class="score-num" aria-hidden="true">4,5</p>
+      <p class="score-txt">Gemiddeld op Google, uit 110 reviews</p>
+      <a class="score-link" href="https://www.google.com/maps/place/Inkstation+Waddinxveen/@52.0445907,4.6539576,17z" rel="noopener" target="_blank">Alle reviews lezen</a>
     </div>
   </section>
 
-  <section class="section dark" id="rijbewijs" aria-labelledby="rijbewijs-title">
-    <div class="wrap">
-      <h2 class="display" id="rijbewijs-title">Rijbewijs verlengen. <em>Begin hier.</em></h2>
-      <p class="lead dark-lead">Bij Inkstation gaan je pasfoto en handtekening digitaal naar de RDW. Daarna verleng je je rijbewijs gewoon online, zonder eerst naar het gemeentehuis.</p>
-      <ol class="steps">
-        <li><span class="step-n" aria-hidden="true">1</span><h3>Foto en handtekening</h3><p>Rens maakt je pasfoto en neemt je handtekening digitaal af. Met jouw toestemming gaan ze direct naar de RDW.</p></li>
-        <li><span class="step-n" aria-hidden="true">2</span><h3>Online aanvragen</h3><p>Je krijgt een aanvraagcode per mail of sms. Daarmee verleng je je rijbewijs online op rdw.nl.</p></li>
-        <li><span class="step-n" aria-hidden="true">3</span><h3>Ophalen</h3><p>Na ongeveer twee werkdagen haal je je nieuwe rijbewijs op bij de gemeente.</p></li>
-      </ol>
-      <p class="note"><a href="https://www.rdw.nl/het-rijbewijs/aanvragen-of-verlengen/rijbewijs-online-verlengen" rel="noopener" target="_blank">Kijk op rdw.nl of online verlengen voor jou kan</a></p>
-    </div>
-  </section>
-
-  <section class="section dark video" id="video" aria-labelledby="video-title">
-    <div class="wrap video-grid">
-      <div class="video-copy">
-        <h2 class="display" id="video-title">Oude video's? <span class="soft">Op USB.</span></h2>
-        <p class="lead">Videobanden en Super 8-films laten overzetten naar USB of dvd. Inkstation is officieel inleverpunt van Scanpaleis: jij brengt je banden hier, Scanpaleis digitaliseert ze, en je haalt alles weer op in de winkel.</p>
-        <ol class="flow">
-          <li><b>Inleveren</b> bij Inkstation</li>
-          <li><b>Digitaliseren</b> door Scanpaleis</li>
-          <li><b>Ophalen</b> in de winkel</li>
-        </ol>
-        <div class="actions">
-          <a class="btn btn-accent" href="https://scanpaleis.nl/media/video-digitaliseren/" rel="noopener" target="_blank">Prijzen bij Scanpaleis</a>
-        </div>
-      </div>
-      <div class="video-media">
-        <figure class="vm vm-tape">
-          <div class="vm-img"><div class="duotone" role="img" aria-label="Een VHS-videoband." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/VHS_videocassette_-_front.jpg/960px-VHS_videocassette_-_front.jpg')"></div></div>
-          <figcaption>Videobanden<span>naar USB of dvd</span></figcaption>
-        </figure>
-        <figure class="vm vm-reel">
-          <div class="vm-img"><div class="duotone" role="img" aria-label="Een spoel met Super 8-film." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/960px-Super-8-mm-film-on-a-spool-02.jpg')"></div></div>
-          <figcaption>Super 8-films<span>naar USB of dvd</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section accent-block reviews" aria-labelledby="reviews-title">
-    <div class="wrap reviews-grid">
-      <div class="score">
-        <p class="big" aria-hidden="true">4,5</p>
-        <h2 class="score-title" id="reviews-title">Gemiddeld 4,5 sterren op Google, uit 110 reviews.</h2>
-        <a class="text-link" href="https://www.google.com/maps/place/Inkstation+Waddinxveen/@52.0445907,4.6539576,17z" rel="noopener" target="_blank">Alle reviews op Google</a>
-      </div>
-      <div class="quotes">
-        <blockquote class="quote">
-          <p>De meneer was enorm geduldig en super lief en nam alle tijd!</p>
-          <footer>Celina, over pasfoto's van haar zoontje van 1,5</footer>
-        </blockquote>
-        <blockquote class="quote">
-          <p>Een prima zaak, eigenaar denkt mee en een vriendelijke sfeer.</p>
-          <footer>Review op Google</footer>
-        </blockquote>
-        <blockquote class="quote">
-          <p>Ook voor baby's kan je gewoon terecht. Top service.</p>
-          <footer>Naw, review op Google</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <section class="section visit" id="langskomen" aria-labelledby="visit-title">
-    <div class="wrap">
-      <div class="visit-grid">
-        <div class="visit-copy">
-          <h2 class="display" id="visit-title">Kom langs.</h2>
-          <p class="addr">Passage 63<span>2741 HB Waddinxveen</span></p>
-          <p class="status-line" data-status-line hidden></p>
-          <div class="actions">
-            <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
-            <a class="btn btn-line" href="tel:+31182630949">Bel 0182 630 949</a>
-          </div>
-        </div>
-        <div class="map">
-          <iframe title="Kaart: Inkstation, Passage 63 in Waddinxveen" src="https://www.openstreetmap.org/export/embed.html?bbox=4.6489%2C52.0420%2C4.6590%2C52.0472&amp;layer=mapnik" loading="lazy"></iframe>
-          <svg class="map-pin" viewBox="0 0 10 14" aria-hidden="true"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg>
-        </div>
-      </div>
-      <h3 class="week-title">Openingstijden</h3>
-      <ol class="week">
-        <li data-day="1"><abbr title="Maandag">Ma</abbr><span>13:00<br>17:30</span></li>
-        <li data-day="2"><abbr title="Dinsdag">Di</abbr><span>10:00<br>17:30</span></li>
-        <li data-day="3"><abbr title="Woensdag">Wo</abbr><span>10:00<br>17:30</span></li>
-        <li data-day="4"><abbr title="Donderdag">Do</abbr><span>10:00<br>17:30</span></li>
-        <li data-day="5"><abbr title="Vrijdag">Vr</abbr><span>10:00<br>17:30</span></li>
-        <li data-day="6" class="is-closed"><abbr title="Zaterdag">Za</abbr><span>Dicht</span></li>
-        <li data-day="0" class="is-closed"><abbr title="Zondag">Zo</abbr><span>Dicht</span></li>
-      </ol>
-      <dl class="details">
-        <div><dt>Telefoon</dt><dd><a href="tel:+31182630949">0182 630 949</a></dd></div>
-        <div><dt>E-mail</dt><dd><a href="mailto:inkstation.waddinxveen@gmail.com">inkstation.waddinxveen@gmail.com</a></dd></div>
-        <div><dt>Ook in de winkel</dt><dd>DHL-pakketpunt</dd></div>
+  <section class="panel panel-flip" id="langskomen" aria-labelledby="visit-title">
+    <div class="panel-copy">
+      <p class="where">Passage 63 · 2741 HB Waddinxveen</p>
+      <h2 class="display panel-title" id="visit-title" style="--em: 4.84"><span class="line">Kom</span><span class="line">langs.</span></h2>
+      <p class="status-line" data-status-line hidden></p>
+      <dl class="hours-mini">
+        <div><dt>Maandag</dt><dd>13:00 – 17:30</dd></div>
+        <div><dt>Dinsdag t/m vrijdag</dt><dd>10:00 – 17:30</dd></div>
+        <div><dt>Zaterdag en zondag</dt><dd>Gesloten</dd></div>
       </dl>
+      <div class="actions">
+        <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
+        <a class="btn btn-line" href="tel:+31182630949">Bel 0182 630 949</a>
+      </div>
+      <p class="visit-extra"><a href="mailto:inkstation.waddinxveen@gmail.com">inkstation.waddinxveen@gmail.com</a> · Ook DHL-pakketpunt</p>
+    </div>
+    <div class="panel-media panel-map">
+      <iframe title="Kaart: Inkstation, Passage 63 in Waddinxveen" src="https://www.openstreetmap.org/export/embed.html?bbox=4.6489%2C52.0420%2C4.6590%2C52.0472&amp;layer=mapnik" loading="lazy"></iframe>
+      <svg class="map-pin" viewBox="0 0 10 14" aria-hidden="true"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg>
     </div>
   </section>
 </main>
@@ -276,7 +219,7 @@
     </a>
     <div class="foot-meta">
       <p>Inkstation · Passage 63 · 2741 HB Waddinxveen · KvK 24377836</p>
-      <p>Foto's via Wikimedia Commons: Adrien Ledoux (CC0), D. Benjamin Miller (CC0), MarcoTangerino (publiek domein), LoMit (CC BY-SA 4.0), CEphoto, Uwe Aranas (CC BY-SA 3.0). Kaart © OpenStreetMap-bijdragers.</p>
+      <p>Foto's via Wikimedia Commons: Adrien Ledoux (CC0), D. Benjamin Miller (CC0), Pietro De Grandi (CC0), MarcoTangerino (publiek domein), CEphoto, Uwe Aranas (CC BY-SA 3.0). Kaart © OpenStreetMap-bijdragers.</p>
       <p>Voorbeeldontwerp door Valentijn de Grijff</p>
     </div>
   </div>
