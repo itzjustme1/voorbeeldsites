@@ -42,8 +42,8 @@ document.querySelectorAll("[data-status], [data-status-line]").forEach(function 
   el.classList.toggle("is-open", shop.open);
   el.hidden = false;
 });
-var row = document.querySelector('.hours tr[data-day="' + shop.day + '"]');
-if (row) row.classList.add("is-today");
+var row = document.querySelector('.week [data-day="' + shop.day + '"]');
+if (row) { row.classList.add("is-today"); row.setAttribute("aria-current", "date"); }
 
 // Mobile menu
 var menuBtn = document.querySelector(".menu-btn");
@@ -75,7 +75,7 @@ if (params.has("kleuren")) {
   picker.className = "picker";
   picker.setAttribute("role", "group");
   picker.setAttribute("aria-label", "Kies een kleur");
-  var current = document.documentElement.getAttribute("data-kleur") || "magenta";
+  var current = document.documentElement.getAttribute("data-kleur");
   var themeMeta = document.querySelector('meta[name="theme-color"]');
   PALETTES.forEach(function (p) {
     var b = document.createElement("button");
@@ -87,8 +87,7 @@ if (params.has("kleuren")) {
     b.style.setProperty("--swatch", p.swatch);
     b.setAttribute("aria-pressed", String(p.id === current));
     b.addEventListener("click", function () {
-      if (p.id === "magenta") document.documentElement.removeAttribute("data-kleur");
-      else document.documentElement.setAttribute("data-kleur", p.id);
+      document.documentElement.setAttribute("data-kleur", p.id);
       try { localStorage.setItem("inkstation-kleur", p.id); } catch (e) {}
       if (themeMeta) themeMeta.setAttribute("content", p.swatch);
       picker.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
