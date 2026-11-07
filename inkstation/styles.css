@@ -135,20 +135,17 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 }
 .hero .lead { margin-bottom: 36px; color: var(--ink-2); }
 
-.hero-panel { position: relative; margin: 0; background: var(--accent); overflow: hidden; }
-/* Accent duotone in one element: the photo is made grey (luminosity over white), then multiplied with the accent.
-   background-blend-mode stays inside the element, so Safari renders it the same as Chrome. */
+.hero-panel { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
+/* Photos are black and white: the colour comes from the type, buttons and blocks, not from tinted photos.
+   A plain filter on a background image (no blend modes) renders the same in Safari and Chrome. */
 .duotone {
   position: absolute; inset: 0;
   background-color: var(--paper);
-  background-image: linear-gradient(var(--accent), var(--accent)), var(--photo);
+  background-image: var(--photo);
   background-size: cover; background-position: center;
-  background-blend-mode: multiply, luminosity;
+  filter: grayscale(1) contrast(1.1);
 }
-/* Camera, wheel and film reel stay black and white: just the photo, made grey with a plain filter (no blend, so Safari-safe) */
-.duotone-camera, .duotone-wheel, .duotone-reel { background-image: var(--photo); background-blend-mode: normal; filter: grayscale(1) contrast(1.1); }
 .duotone-camera { background-position: 50% 45%; }
-#pasfoto .panel-media, #rijbewijs .panel-media, #video .panel-media { background: var(--paper); }
 
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
 .status { font-weight: 700; display: flex; align-items: flex-start; gap: 10px; }
@@ -192,7 +189,7 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
   text-underline-offset: -.14em; text-decoration-skip-ink: none;
 }
 .panel .lead { color: var(--ink-2); margin-bottom: 36px; }
-.panel-media { position: relative; margin: 0; background: var(--accent); overflow: hidden; }
+.panel-media { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
 .duotone-wheel { background-position: 35% 50%; }
 .duotone-reel { background-position: 50% 50%; }
 #inkt .duotone { background-position: 24% 50%; }
