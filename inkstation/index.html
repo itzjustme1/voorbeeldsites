@@ -27,7 +27,7 @@
     document.documentElement.setAttribute("data-kleur", k || "oranje");
   })();
 </script>
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=19">
 <script src="script.js?v=15" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Hours as listed on Google Maps (7 Nov 2026). -->
 <script type="application/ld+json">
@@ -111,18 +111,31 @@
     <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   </section>
 
+  <nav class="index" aria-label="Wat je bij Inkstation regelt">
+    <a href="#inkt"><span class="index-n">01</span><b>Inkt &amp; toner</b><span>Scherp geprijsd, plus refill</span></a>
+    <a href="#pasfoto"><span class="index-n">02</span><b>Pasfoto's</b><span>Ook voor baby's en kinderen</span></a>
+    <a href="#rijbewijs"><span class="index-n">03</span><b>Rijbewijs</b><span>Foto en handtekening digitaal</span></a>
+    <a href="#video"><span class="index-n">04</span><b>Video &amp; film</b><span>Videobanden en Super 8 naar USB</span></a>
+  </nav>
+
   <!-- Below the hero: one screen per service, built like the hero (copy + full-height panel), alternating sides. -->
   <section class="panel" id="inkt" aria-labelledby="inkt-title">
     <div class="panel-copy">
       <p class="where">Inkt &amp; toner</p>
       <h2 class="display panel-title" id="inkt-title" style="--em: 5.52"><span class="line">Inkt</span><span class="line">voor</span><span class="line">minder.</span></h2>
-      <p class="lead">Inktpatronen en lasertoners, bijna altijd goedkoper dan de grote webshops. Lege Canon- of HP-patroon? Die vult Rens hier opnieuw.</p>
+      <p class="lead">Inktpatronen en lasertoners voor een hele scherpe prijs. Gewoon in de winkel, zonder verzendkosten en zonder wachten op de bezorger.</p>
+      <ul class="facts">
+        <li><b>Inktpatronen</b>Voor je printer thuis. Neem je lege patroon mee, dan heb je zeker de goede.</li>
+        <li><b>Lasertoners</b>Voor laserprinters, thuis of op het werk. Vraag gerust of jouw toner er is.</li>
+        <li><b>Refill</b>Lege Canon- of HP-patroon? Laat hem hier opnieuw vullen.</li>
+      </ul>
       <div class="actions">
         <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
         <a class="btn btn-line" href="#langskomen">Openingstijden &amp; route</a>
       </div>
     </div>
     <figure class="panel-media">
+      <div class="ticket"><p class="ticket-big">Bijna altijd goedkoper dan de grote webshops</p><p class="rating">Inktpatronen en toners, in de winkel</p></div>
       <div class="duotone" role="img" aria-label="Twee zwarte inktpatronen." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/HP_Inkjet_Black_Print_Cartridge_21.jpg/1280px-HP_Inkjet_Black_Print_Cartridge_21.jpg')"></div>
     </figure>
   </section>
@@ -132,12 +145,29 @@
       <p class="where">Pasfoto's &amp; portretten</p>
       <h2 class="display panel-title" id="pasfoto-title" style="--em: 7.58"><span class="line">Pasfoto's.</span><span class="line">Ook voor</span><span class="line">baby's.</span></h2>
       <p class="lead">Voor je paspoort, ID-kaart of rijbewijs, meteen goed. Rens neemt er de tijd voor, ook met de kleinsten.</p>
-      <p class="panel-quote">“Voor de beste pasfoto's van de regio.” <span>Peter, op Google</span></p>
+      <ul class="facts">
+        <li><b>Paspoort &amp; ID</b>Volgens de eisen van de overheid, 35 × 45 mm.</li>
+        <li><b>Baby's &amp; kinderen</b>Gewoon welkom, ook als het even niet meezit.</li>
+        <li><b>Portretten</b>Liever een mooie foto voor thuis of je werk? Kan ook.</li>
+      </ul>
+      <p class="panel-quote">“Voor de beste pasfoto's van de regio. Rens is een vakman.” <span>Peter, op Google</span></p>
       <div class="actions">
         <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
       </div>
     </div>
     <figure class="panel-media">
+      <div class="ticket ticket-spec">
+          <svg viewBox="0 0 400 480" role="img" aria-labelledby="spec-title">
+            <title id="spec-title">Formaat van een pasfoto: 35 bij 45 millimeter.</title>
+            <path class="spec-line" d="M60 40v24M36 64h24M340 40v24M340 64h24M60 440v-24M36 416h24M340 440v-24M340 416h24"/>
+            <rect class="spec-frame" x="60" y="64" width="280" height="352"/>
+            <ellipse class="spec-face" cx="200" cy="222" rx="74" ry="102"/>
+            <path class="spec-line" d="M60 456h280M60 450v12M340 450v12M376 64v352M370 64h12M370 416h12"/>
+            <text class="spec-label" x="200" y="480" text-anchor="middle">35 mm</text>
+            <text class="spec-label" x="392" y="246" text-anchor="middle" transform="rotate(90 392 240)">45 mm</text>
+          </svg>
+          <p class="rating">35 × 45 mm, volgens de eisen van de overheid</p>
+        </div>
       <div class="duotone duotone-camera" role="img" aria-label="Een fotocamera, van voren gezien." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg')"></div>
     </figure>
   </section>
@@ -146,13 +176,19 @@
     <div class="panel-copy">
       <p class="where">Rijbewijs verlengen</p>
       <h2 class="display panel-title" id="rijbewijs-title" style="--em: 8.42"><span class="line">Rijbewijs</span><span class="line">verlengen.</span><span class="line">Begin hier.</span></h2>
-      <p class="lead">Rens maakt je pasfoto en neemt je handtekening digitaal af. Daarna verleng je online bij de RDW en haal je je rijbewijs op bij de gemeente.</p>
+      <p class="lead">Geen losse pasfoto en geen eerste afspraak op het gemeentehuis: bij Inkstation gaan je foto en handtekening digitaal naar de RDW.</p>
+      <ol class="steps">
+        <li><b>Foto en handtekening</b>Rens maakt je pasfoto en neemt je handtekening digitaal af. Met jouw toestemming gaan ze direct naar de RDW.</li>
+        <li><b>Online aanvragen</b>Je krijgt een aanvraagcode per mail of sms en verlengt online op rdw.nl.</li>
+        <li><b>Ophalen</b>Na ongeveer twee werkdagen haal je je nieuwe rijbewijs op bij de gemeente.</li>
+      </ol>
       <div class="actions">
         <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
         <a class="btn btn-line" href="https://www.rdw.nl/het-rijbewijs/aanvragen-of-verlengen/rijbewijs-online-verlengen" rel="noopener" target="_blank">Hoe het werkt (RDW)</a>
       </div>
     </div>
     <figure class="panel-media">
+      <div class="ticket"><p class="ticket-big">Klaar in ongeveer twee werkdagen</p><p class="rating">Ophalen bij de gemeente</p></div>
       <div class="duotone duotone-wheel" role="img" aria-label="Het stuur van een auto." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Car_interior_during_the_daytime_%28Unsplash%29.jpg/1280px-Car_interior_during_the_daytime_%28Unsplash%29.jpg')"></div>
     </figure>
   </section>
@@ -161,12 +197,18 @@
     <div class="panel-copy">
       <p class="where">Video &amp; film digitaliseren</p>
       <h2 class="display panel-title" id="video-title" style="--em: 5.84"><span class="line">Oude</span><span class="line">video's?</span><span class="line">Op USB.</span></h2>
-      <p class="lead">Videobanden en Super 8-films naar USB of dvd. Inkstation is officieel inleverpunt van Scanpaleis: hier brengen, hier weer ophalen.</p>
+      <p class="lead">Videobanden en Super 8-films op USB of dvd, zodat je ze weer gewoon kunt kijken. Je hoeft er niets voor op te sturen.</p>
+      <ol class="steps">
+        <li><b>Inleveren</b>Breng je banden of films naar Inkstation in de Passage.</li>
+        <li><b>Digitaliseren</b>Scanpaleis zet alles over naar USB of dvd.</li>
+        <li><b>Ophalen</b>Je haalt alles weer op bij Inkstation.</li>
+      </ol>
       <div class="actions">
         <a class="btn btn-accent" href="https://scanpaleis.nl/media/video-digitaliseren/" rel="noopener" target="_blank">Prijzen bij Scanpaleis</a>
       </div>
     </div>
     <figure class="panel-media">
+      <div class="ticket"><p class="ticket-big">Officieel inleverpunt van Scanpaleis</p><p class="rating">Prijzen en formaten op scanpaleis.nl</p></div>
       <div class="duotone duotone-reel" role="img" aria-label="Een spoel met Super 8-film." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/1280px-Super-8-mm-film-on-a-spool-02.jpg')"></div>
     </figure>
   </section>
@@ -179,6 +221,8 @@
         <li>“De meneer was enorm geduldig en nam alle tijd!” <span>Celina</span></li>
         <li>“Rens is een vakman.” <span>Peter</span></li>
         <li>“Ook voor baby's kan je gewoon terecht. Top service.” <span>Naw</span></li>
+        <li>“Een prima zaak, eigenaar denkt mee en een vriendelijke sfeer.” <span>Review op Google</span></li>
+        <li>“Een leuk contact met de fotograaf levert een vele malen betere foto op.” <span>Review op Google</span></li>
       </ul>
     </div>
     <div class="panel-media panel-score">

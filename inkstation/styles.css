@@ -194,8 +194,40 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
 .duotone-reel { background-position: 50% 50%; }
 #inkt .duotone { background-position: 24% 50%; }
 
-/* Pasfoto: one short real review under the sentence */
-.panel-quote { margin: -12px 0 36px; font-size: var(--fs-h3); font-weight: 700; line-height: 1.3; }
+/* Services index right under the hero: four jump links on ink */
+.index {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--ink);
+  padding: 0 max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+}
+.index a { display: grid; align-content: start; gap: 8px; padding: 36px 24px 40px; color: var(--paper); text-decoration: none; border-left: 1px solid var(--line-dark); }
+.index a:first-child { padding-left: 0; border-left: 0; }
+.index-n { font-size: var(--fs-ui); font-weight: 800; font-stretch: 125%; color: var(--accent-on-ink); }
+.index b { font-size: var(--fs-h3); font-weight: 800; font-stretch: 125%; text-transform: uppercase; line-height: 1.1; transition: color var(--dur) var(--ease); }
+.index a span:last-child { font-size: var(--fs-ui); color: var(--on-ink); }
+.index a:hover b { color: var(--accent-on-ink); }
+
+/* Three short facts or numbered steps inside a panel */
+.facts, .steps { list-style: none; margin: 0 0 36px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 760px; counter-reset: step; }
+.facts li, .steps li { border-top: 3px solid var(--ink); padding-top: 14px; font-size: var(--fs-ui); line-height: 1.45; color: var(--ink-2); }
+.facts b, .steps b { display: block; margin-bottom: 4px; font-size: var(--fs-body); color: var(--ink); }
+.steps li { counter-increment: step; }
+.steps li::before { content: counter(step); display: block; margin-bottom: 8px; font-size: var(--fs-h3); font-weight: 800; font-stretch: 125%; line-height: 1; color: var(--accent-text); }
+#rijbewijs .steps li { border-top-color: var(--paper); color: var(--on-ink); }
+#rijbewijs .steps b { color: var(--paper); }
+#rijbewijs .steps li::before { color: var(--accent-on-ink); }
+
+/* Tickets on the photo panels, same card as the hero's opening-hours ticket */
+.panel-media .ticket { z-index: 1; }
+.ticket-big { font-weight: 800; font-size: var(--fs-lead); line-height: 1.25; }
+.ticket-spec { max-width: 240px; }
+.ticket-spec svg { width: 100%; height: auto; overflow: visible; margin-bottom: 4px; }
+.spec-line { fill: none; stroke: var(--ink); stroke-width: 3; }
+.spec-frame { fill: var(--tint); stroke: var(--accent-text); stroke-width: 8; }
+.spec-face { fill: none; stroke: var(--ink-2); stroke-width: 3; stroke-dasharray: 10 10; }
+.spec-label { font: 700 30px "Archivo", sans-serif; fill: var(--ink); }
+
+/* Pasfoto: one short real review under the facts */
+.panel-quote { margin: 0 0 36px; font-size: var(--fs-h3); font-weight: 700; line-height: 1.3; }
 .panel-quote span { display: block; margin-top: 6px; font-size: var(--fs-ui); font-weight: 400; color: var(--ink-2); }
 
 /* Rijbewijs: copy side on ink for rhythm */
@@ -301,6 +333,10 @@ html[data-kleur="kobalt"] {
   .panel-copy, .panel-flip .panel-copy { padding: 72px var(--gutter); }
   .panel-media { min-height: 420px; }
   .panel-score { padding: 56px var(--gutter); min-height: 0; }
+  .index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .index a { padding: 28px 20px 30px; }
+  .index a:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .index a:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
   .foot-meta { text-align: left; }
 }
 @media (max-width: 600px) {
@@ -324,8 +360,14 @@ html[data-kleur="kobalt"] {
   .panel .lead { margin-bottom: 28px; }
   .panel-media { min-height: 340px; }
   .panel-map { min-height: 380px; }
+  .facts, .steps { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .index a { padding: 22px 12px 24px; }
+  .index a:nth-child(odd) { padding-left: 0; }
+  .index b { font-size: 18px; }
+  .ticket-spec { max-width: 150px; padding: 12px 14px; }
+  .ticket-spec .rating { font-size: var(--fs-sm); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .nav a, .text-link, .score-link { transition: none; }
+  .btn, .nav a, .text-link, .score-link, .index b { transition: none; }
 }
