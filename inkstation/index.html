@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Concept preview: remove noindex once this goes live on Inkstation's own domain -->
+<!-- Concept preview: remove noindex, swap og:url/og:image to the real domain and add a canonical once this goes live on Inkstation's own domain -->
 <meta name="robots" content="noindex, nofollow">
 <title>Inkstation Waddinxveen · Inkt, toner, pasfoto's en meer</title>
 <meta name="description" content="Inktpatronen en lasertoners voor een scherpe prijs, refill van Canon en HP, pasfoto's en portretten, rijbewijs digitaal verlengen en video digitaliseren. Inkstation, sinds 2005 in de Passage in Waddinxveen.">
@@ -12,13 +12,16 @@
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Inkstation Waddinxveen">
 <meta property="og:title" content="Inkstation Waddinxveen · Inkt, toner en pasfoto's">
-<meta property="og:description" content="Scherp geprijsde inkt en toner, refill, pasfoto's, rijbewijs verlengen en video digitaliseren. Passage 63, Waddinxveen.">
-<meta property="og:image" content="og-image.png">
+<meta property="og:description" content="Scherp geprijsde inkt en toner, refill, pasfoto's en portretten, rijbewijs verlengen en video digitaliseren. Sinds 2005 in de Passage, Waddinxveen.">
+<meta property="og:url" content="https://itzjustme1.github.io/voorbeeldsites/inkstation/">
+<meta property="og:image" content="https://itzjustme1.github.io/voorbeeldsites/inkstation/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Inkstation: inkt, toner en pasfoto's, op het gele bord van de winkel.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,400..800;1,100..125,800&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
   // Palette: Inkstation's own yellow and red by default; ?kleur=oranje|magenta|cyaan|kobalt previews another one before first paint (no colour flash).
   (function () {
@@ -27,14 +30,16 @@
     document.documentElement.setAttribute("data-kleur", k || "huisstijl");
   })();
 </script>
-<link rel="stylesheet" href="styles.css?v=24">
-<script src="script.js?v=16" defer></script>
+<link rel="stylesheet" href="styles.css?v=27">
+<script src="script.js?v=17" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Hours as listed on Google Maps (7 Nov 2026). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Store",
   "name": "Inkstation Waddinxveen",
+  "url": "https://itzjustme1.github.io/voorbeeldsites/inkstation/",
+  "image": "https://itzjustme1.github.io/voorbeeldsites/inkstation/og-image.jpg",
   "description": "Inktpatronen, lasertoners, refill, pasfoto's en portretten, rijbewijs digitaal verlengen, digitaliseren via Scanpaleis en DHL-afgiftepunt.",
   "telephone": "+31 182 630 949",
   "email": "inkstation.waddinxveen@gmail.com",
@@ -54,13 +59,12 @@
 }
 </script>
 <!--
-  Photos: Wikimedia Commons, hotlinked for this concept. Download them locally before going live.
+  Photos: Wikimedia Commons, stored in img/ as black-and-white WebP (grayscale + 10% contrast baked in, 800/1280/1800 wide).
   - Moving_Water_and_Ink_(Unsplash).jpg, Adrien Ledoux, CC0
   - Canon_EOS_R5_Mark_II_(front,_no_body_cap).jpg, D. Benjamin Miller, CC0
   - Car_interior_during_the_daytime_(Unsplash).jpg, Pietro De Grandi, CC0
   - HP_Inkjet_Black_Print_Cartridge_21.jpg, MarcoTangerino, public domain
   - Super-8-mm-film-on-a-spool-02.jpg, CEphoto, Uwe Aranas, CC BY-SA 3.0
-  All photos are shown black and white with a CSS grayscale filter. No edited files.
 -->
 </head>
 <body>
@@ -71,7 +75,7 @@
 <header class="site-head">
   <div class="wrap bar">
     <a class="logo" href="#top" aria-label="Inkstation, naar boven">
-      <span class="logo-word" aria-hidden="true"><span class="logo-i">I<svg class="logo-drop logo-drop-c" viewBox="0 0 10 14"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg></span>NKSTAT<span class="logo-i">I<svg class="logo-drop logo-drop-m" viewBox="0 0 10 14"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg></span>ON</span>
+      <span aria-hidden="true">INKSTATION</span>
     </a>
     <nav class="nav" id="nav" aria-label="Hoofdmenu">
       <a href="#inkt">Inkt &amp; toner</a>
@@ -102,7 +106,7 @@
         </div>
       </div>
       <figure class="hero-panel">
-        <div class="duotone" style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Moving_Water_and_Ink_%28Unsplash%29.jpg/1280px-Moving_Water_and_Ink_%28Unsplash%29.jpg')"></div>
+        <img class="duotone" src="img/ink-1280.webp" srcset="img/ink-800.webp 800w, img/ink-1280.webp 1280w, img/ink-1800.webp 1800w" sizes="(max-width: 980px) 100vw, 45vw" width="1800" height="2330" alt="" fetchpriority="high" decoding="async">
         <a class="sticker" href="#pasfoto"><span>20 jaar Inkstation</span><b>€10</b><span>Portretfoto, ingelijst</span></a>
         <div class="ticket">
           <p class="status" data-status>Ma 13:00–17:30 · di–vr 10:00–17:30</p>
@@ -138,7 +142,7 @@
     </div>
     <figure class="panel-media">
       <div class="ticket"><p class="ticket-big">Setjes vaak veel goedkoper dan bij 123inkt en Printabout</p><p class="rating">Inktpatronen en toners, gewoon in de winkel</p></div>
-      <div class="duotone" role="img" aria-label="Twee zwarte inktpatronen." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/HP_Inkjet_Black_Print_Cartridge_21.jpg/1280px-HP_Inkjet_Black_Print_Cartridge_21.jpg')"></div>
+      <img class="duotone" src="img/cartridge-1280.webp" srcset="img/cartridge-800.webp 800w, img/cartridge-1280.webp 1280w, img/cartridge-1800.webp 1800w" sizes="(max-width: 600px) 140vw, (max-width: 980px) 100vw, 60vw" width="1800" height="1098" alt="Twee zwarte inktpatronen." loading="lazy" decoding="async">
     </figure>
   </section>
 
@@ -170,7 +174,7 @@
           </svg>
           <p class="rating">35 × 45 mm, volgens de eisen van de overheid</p>
         </div>
-      <div class="duotone duotone-camera" role="img" aria-label="Een fotocamera, van voren gezien." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg/1280px-Canon_EOS_R5_Mark_II_%28front%2C_no_body_cap%29.jpg')"></div>
+      <img class="duotone duotone-camera" src="img/camera-1280.webp" srcset="img/camera-800.webp 800w, img/camera-1280.webp 1280w, img/camera-1800.webp 1800w" sizes="(max-width: 600px) 140vw, (max-width: 980px) 100vw, 60vw" width="1800" height="1350" alt="Een fotocamera, van voren gezien." loading="lazy" decoding="async">
     </figure>
   </section>
 
@@ -191,7 +195,7 @@
     </div>
     <figure class="panel-media">
       <div class="ticket"><p class="ticket-big">Klaar in ongeveer twee werkdagen</p><p class="rating">Ophalen bij de gemeente</p></div>
-      <div class="duotone duotone-wheel" role="img" aria-label="Het stuur van een auto." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Car_interior_during_the_daytime_%28Unsplash%29.jpg/1280px-Car_interior_during_the_daytime_%28Unsplash%29.jpg')"></div>
+      <img class="duotone duotone-wheel" src="img/wheel-1280.webp" srcset="img/wheel-800.webp 800w, img/wheel-1280.webp 1280w, img/wheel-1800.webp 1800w" sizes="(max-width: 600px) 140vw, (max-width: 980px) 100vw, 60vw" width="1800" height="1200" alt="Het stuur van een auto." loading="lazy" decoding="async">
     </figure>
   </section>
 
@@ -211,7 +215,7 @@
     </div>
     <figure class="panel-media">
       <div class="ticket"><p class="ticket-big">Officieel inleverpunt van Scanpaleis</p><p class="rating">Prijzen en formaten op scanpaleis.nl</p></div>
-      <div class="duotone duotone-reel" role="img" aria-label="Een spoel met Super 8-film." style="--photo: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Super-8-mm-film-on-a-spool-02.jpg/1280px-Super-8-mm-film-on-a-spool-02.jpg')"></div>
+      <img class="duotone" src="img/reel-1280.webp" srcset="img/reel-800.webp 800w, img/reel-1280.webp 1280w, img/reel-1800.webp 1800w" sizes="(max-width: 980px) 100vw, 50vw" width="1800" height="1800" alt="Een spoel met Super 8-film." loading="lazy" decoding="async">
     </figure>
   </section>
 
@@ -276,7 +280,7 @@
   <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap foot">
     <a class="logo logo-tile" href="#top" aria-label="Inkstation, naar boven">
-      <span class="logo-word" aria-hidden="true"><span class="logo-i">I<svg class="logo-drop logo-drop-c" viewBox="0 0 10 14"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg></span>NKSTAT<span class="logo-i">I<svg class="logo-drop logo-drop-m" viewBox="0 0 10 14"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg></span>ON</span>
+      <span aria-hidden="true">INKSTATION</span>
     </a>
     <div class="foot-meta">
       <p>Inkstation, sinds 2005 · Passage 63 · 2741 HB Waddinxveen · KvK 24377836</p>

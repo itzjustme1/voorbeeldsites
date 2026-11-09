@@ -20,17 +20,17 @@ function openStatus() {
   var now = nowInNL();
   var today = HOURS[now.day];
   if (today && now.min >= today[0] && now.min < today[1]) {
-    return { open: true, day: now.day, text: "Nu open, tot " + fmt(today[1]) + " uur" };
+    return { open: true, text: "Nu open, tot " + fmt(today[1]) + " uur" };
   }
   // Find the next opening moment: later today, or the first day after that has hours.
   if (today && now.min < today[0]) {
-    return { open: false, day: now.day, text: "Nu gesloten, vandaag open vanaf " + fmt(today[0]) + " uur" };
+    return { open: false, text: "Nu gesloten, vandaag open vanaf " + fmt(today[0]) + " uur" };
   }
   for (var i = 1; i <= 7; i++) {
     var d = (now.day + i) % 7;
     if (HOURS[d]) {
       var when = i === 1 ? "morgen" : DAYS[d];
-      return { open: false, day: now.day, text: "Nu gesloten, " + when + " weer open vanaf " + fmt(HOURS[d][0]) + " uur" };
+      return { open: false, text: "Nu gesloten, " + when + " weer open vanaf " + fmt(HOURS[d][0]) + " uur" };
     }
   }
 }
@@ -42,8 +42,6 @@ document.querySelectorAll("[data-status], [data-status-line]").forEach(function 
   el.classList.toggle("is-open", shop.open);
   el.hidden = false;
 });
-var row = document.querySelector('.week [data-day="' + shop.day + '"]');
-if (row) { row.classList.add("is-today"); row.setAttribute("aria-current", "date"); }
 
 // Mobile menu
 var menuBtn = document.querySelector(".menu-btn");

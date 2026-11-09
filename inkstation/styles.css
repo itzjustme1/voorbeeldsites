@@ -3,6 +3,18 @@
    On black, the accent switches to yellow, like the shop sign. Other palettes below are previews only (?kleuren).
    Shape rule: interactive things (buttons) are pills, everything else is square like cut paper.
    Values come from DESIGN-RECON.md. */
+/* Archivo, self-hosted: one variable file (latin subset) covers weights 400-800 and widths 100-125%.
+   The wordmark's slant is a CSS skew of this file, so no separate italic font is downloaded. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100% 125%;
+  font-display: swap;
+  src: url("fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --paper: #ffffff;
   --ink: #111114;
@@ -106,15 +118,11 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .text-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-text); transition: color var(--dur) var(--ease); }
 .text-link:hover { color: var(--accent-text); }
 
-/* Wordmark: INKSTATION in red bold italic like the shop sign, with a cyan and a magenta ink drop above the two I's */
-.logo { display: inline-flex; align-items: baseline; padding-top: .2em; color: var(--logo); text-decoration: none; font-weight: 800; font-style: italic; font-stretch: 112%; font-size: 26px; letter-spacing: -.005em; line-height: 1; }
-.logo-word { display: inline-flex; align-items: baseline; }
-.logo-i { position: relative; }
-/* The I leans right, so its drop sits right of the letter's base centre */
-.logo-drop { position: absolute; left: calc(50% + .15em); top: -.14em; width: .24em; height: auto; transform: translateX(-50%); }
-.logo-drop-c { fill: var(--cyan); }
-.logo-drop-m { fill: var(--magenta); }
-.logo-tile { background: var(--brand); padding: .5em .6em .32em; }
+/* Wordmark: INKSTATION in red bold italic, like the shop sign */
+.logo { display: inline-flex; align-items: baseline; color: var(--logo); text-decoration: none; font-weight: 800; font-stretch: 112%; font-size: 26px; letter-spacing: -.005em; line-height: 1; }
+/* The slant is a skew of the upright font, so no separate italic file is needed and every browser draws it the same */
+.logo span { display: inline-block; transform: skewX(-11deg); }
+.logo-tile { background: var(--brand); padding: .4em .6em; }
 
 /* Header */
 .site-head { position: sticky; top: 0; z-index: 20; background: var(--brand); box-shadow: 0 1px 0 rgba(17, 17, 20, .12); }
@@ -148,15 +156,9 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 
 .hero-panel { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
 /* Photos are black and white: the colour comes from the type, buttons and blocks, not from tinted photos.
-   A plain filter on a background image (no blend modes) renders the same in Safari and Chrome. */
-.duotone {
-  position: absolute; inset: 0;
-  background-color: var(--paper);
-  background-image: var(--photo);
-  background-size: cover; background-position: center;
-  filter: grayscale(1) contrast(1.1);
-}
-.duotone-camera { background-position: 50% 45%; }
+   The grayscale is baked into the WebP files in img/, so there is no CSS filter to paint. */
+.duotone { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: var(--tint); }
+.duotone-camera { object-position: 50% 45%; }
 
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
 /* 20-year offer as a round window sticker on the hero photo (round because it's a link, like the buttons) */
@@ -211,9 +213,8 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
 }
 .panel .lead { color: var(--ink-2); margin-bottom: 36px; }
 .panel-media { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
-.duotone-wheel { background-position: 35% 50%; }
-.duotone-reel { background-position: 50% 50%; }
-#inkt .duotone { background-position: 24% 50%; }
+.duotone-wheel { object-position: 35% 50%; }
+#inkt .duotone { object-position: 24% 50%; }
 
 /* Services index right under the hero: four jump links on ink */
 .index {
