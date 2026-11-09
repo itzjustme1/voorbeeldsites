@@ -1,5 +1,6 @@
-/* Inkstation concept: paper, ink black and one accent colour (orange by default, see the palettes below).
-   Cyan and yellow only appear in the CMYK colour bar, like the test strip on a print.
+/* Inkstation concept in the shop's own house style (since 2005): sign yellow, red letters, coloured ink drops.
+   Yellow is the ground for the header, hero and shop band; red is the one accent; photos stay black and white.
+   On black, the accent switches to yellow, like the shop sign. Other palettes below are previews only (?kleuren).
    Shape rule: interactive things (buttons) are pills, everything else is square like cut paper.
    Values come from DESIGN-RECON.md. */
 :root {
@@ -11,7 +12,11 @@
   --magenta: #e4007c;
   --magenta-deep: #c2006a;
   --cyan: #009fe3;
-  --yellow: #ffed00;
+  --yellow: #ffe500;
+  /* House style, matched to the shop sign: yellow panel, red italic INKSTATION */
+  --brand: #ffe500;
+  --red: #e30613;
+  --red-deep: #c4040f;
   --on-ink: #c9cad0;
 
   /* The one accent colour. Each role gets its own token so a palette can swap colour without breaking contrast:
@@ -19,14 +24,16 @@
      --accent-text: accent as large text on paper. --accent-text-sm: small accent text on the tint ground.
      --accent-on-ink: accent text and shapes on black. --accent-mark: highlighter under accent words (only when
      the accent itself is too light to read on paper). */
-  --accent: var(--magenta);
-  --accent-deep: var(--magenta-deep);
+  /* Red on white 4.8:1, white on red 4.8:1, red on yellow 3.6:1 (display sizes only), yellow on ink 15:1. */
+  --accent: var(--red);
+  --accent-deep: var(--red-deep);
   --on-accent: var(--paper);
-  --on-accent-head: var(--ink);
-  --accent-text: var(--magenta);
-  --accent-text-sm: var(--magenta-deep);
-  --accent-on-ink: var(--magenta);
+  --on-accent-head: var(--paper);
+  --accent-text: var(--red);
+  --accent-text-sm: var(--red-deep);
+  --accent-on-ink: var(--brand);
   --accent-mark: transparent;
+  --logo: var(--red);
   --line-dark: #2c2d33;
 
   --fs-sm: 13px;
@@ -99,24 +106,28 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .text-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-text); transition: color var(--dur) var(--ease); }
 .text-link:hover { color: var(--accent-text); }
 
-/* Wordmark: a dotless i whose dot is an ink drop */
-.logo { display: inline-flex; align-items: baseline; text-decoration: none; font-weight: 800; font-stretch: 125%; font-size: 26px; letter-spacing: -.02em; line-height: 1; }
+/* Wordmark: INKSTATION in red bold italic like the shop sign, with a cyan and a magenta ink drop above the two I's */
+.logo { display: inline-flex; align-items: baseline; padding-top: .2em; color: var(--logo); text-decoration: none; font-weight: 800; font-style: italic; font-stretch: 112%; font-size: 26px; letter-spacing: -.005em; line-height: 1; }
+.logo-word { display: inline-flex; align-items: baseline; }
 .logo-i { position: relative; }
-.logo-drop { position: absolute; left: 50%; top: -.2em; width: .27em; height: auto; transform: translateX(-50%); fill: var(--accent); }
-.logo-light { color: var(--paper); }
+/* The I leans right, so its drop sits right of the letter's base centre */
+.logo-drop { position: absolute; left: calc(50% + .15em); top: -.14em; width: .24em; height: auto; transform: translateX(-50%); }
+.logo-drop-c { fill: var(--cyan); }
+.logo-drop-m { fill: var(--magenta); }
+.logo-tile { background: var(--brand); padding: .5em .6em .32em; }
 
 /* Header */
-.site-head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
+.site-head { position: sticky; top: 0; z-index: 20; background: var(--brand); box-shadow: 0 1px 0 rgba(17, 17, 20, .12); }
 .bar { display: flex; align-items: center; gap: 32px; height: 80px; }
 .nav { display: flex; gap: 28px; margin-left: auto; font-size: var(--fs-ui); font-weight: 700; }
-.nav a { text-decoration: none; transition: color var(--dur) var(--ease); }
-.nav a:hover { color: var(--accent-text); }
+.nav a { text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: text-decoration-color var(--dur) var(--ease); }
+.nav a:hover { text-decoration-color: var(--accent); }
 .btn-call { min-height: 44px; padding: 0 20px; }
 .call-short { display: none; }
 .menu-btn { display: none; }
 
 /* Hero: copy on paper, the photo panel bleeds to the right edge */
-.hero { position: relative; }
+.hero { position: relative; background: var(--brand); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); min-height: min(820px, calc(100dvh - 115px)); }
 .hero-copy {
   container-type: inline-size;
@@ -148,6 +159,16 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .duotone-camera { background-position: 50% 45%; }
 
 .ticket { position: absolute; left: 32px; right: 32px; bottom: 32px; max-width: 340px; background: var(--paper); padding: 20px 24px; display: grid; gap: 6px; }
+/* 20-year offer as a round window sticker on the hero photo (round because it's a link, like the buttons) */
+.sticker {
+  position: absolute; top: 32px; right: 32px; z-index: 1; width: 172px; aspect-ratio: 1; padding: 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center;
+  border-radius: 50%; background: var(--accent); color: var(--on-accent); text-decoration: none;
+  font-size: var(--fs-sm); font-weight: 700; line-height: 1.2; transform: rotate(-8deg);
+  transition: background-color var(--dur) var(--ease);
+}
+.sticker b { font-size: 54px; font-weight: 800; font-stretch: 125%; line-height: 1; letter-spacing: -.02em; }
+.sticker:hover { background: var(--accent-deep); }
 .status { font-weight: 700; display: flex; align-items: flex-start; gap: 10px; }
 .status::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: .5em; background: var(--ink-2); }
 .status.is-open::before { background: var(--accent); }
@@ -226,9 +247,25 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
 .spec-face { fill: none; stroke: var(--ink-2); stroke-width: 3; stroke-dasharray: 10 10; }
 .spec-label { font: 700 30px "Archivo", sans-serif; fill: var(--ink); }
 
-/* Pasfoto: one short real review under the facts */
-.panel-quote { margin: 0 0 36px; font-size: var(--fs-h3); font-weight: 700; line-height: 1.3; }
-.panel-quote span { display: block; margin-top: 6px; font-size: var(--fs-ui); font-weight: 400; color: var(--ink-2); }
+/* Pasfoto: the 20-year portrait offer, on the house yellow */
+.offer { margin: 0 0 36px; max-width: 34em; padding: 18px 22px; background: var(--brand); border-left: 6px solid var(--accent); font-size: var(--fs-lead); line-height: 1.35; }
+.offer span { color: var(--ink-2); }
+
+/* Shop band: the rest of the assortment set large on yellow, separated by C, M and K ink drops */
+.assort { background: var(--brand); padding: 112px 0; }
+.assort h2.where { margin: 0 0 32px; }
+.assort-list {
+  list-style: none; margin: 0 0 40px; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline;
+  font-size: clamp(24px, 5.4vw, 76px); font-weight: 800; font-stretch: 125%; text-transform: uppercase; line-height: 1.1; letter-spacing: -.01em;
+}
+.assort-list li { display: inline-flex; align-items: center; }
+.assort-list li:not(:last-child)::after {
+  content: ""; width: .28em; height: .4em; margin: 0 .3em; background: var(--drop, var(--magenta));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.assort-list li:nth-child(3n+1) { --drop: var(--cyan); }
+.assort-list li:nth-child(3n) { --drop: var(--ink); }
+.assort-dhl { max-width: 34em; padding-top: 16px; border-top: 3px solid var(--ink); font-size: var(--fs-lead); }
 
 /* Rijbewijs: copy side on ink for rhythm */
 #rijbewijs .panel-copy { background: var(--ink); color: var(--paper); }
@@ -266,7 +303,13 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
 .foot { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px; padding-top: 48px; padding-bottom: 56px; font-size: var(--fs-sm); }
 .foot-meta { display: grid; gap: 6px; max-width: 640px; text-align: right; }
 
-/* Alternative palettes, picked with ?kleur=… (see script.js). Contrast per role checked against WCAG AA. */
+/* Alternative palettes, picked with ?kleur=… (see script.js). Contrast per role checked against WCAG AA.
+   They drop the yellow ground (--brand) and the red wordmark, so they only preview the accent. */
+html[data-kleur="magenta"], html[data-kleur="cyaan"], html[data-kleur="geel"], html[data-kleur="oranje"], html[data-kleur="kobalt"] { --brand: var(--paper); --logo: var(--ink); }
+html[data-kleur="magenta"] {
+  --accent: var(--magenta); --accent-deep: var(--magenta-deep); --on-accent: var(--paper); --on-accent-head: var(--ink);
+  --accent-text: var(--magenta); --accent-text-sm: var(--magenta-deep); --accent-on-ink: var(--magenta);
+}
 html[data-kleur="cyaan"] {
   --accent: #00a3e0; --accent-deep: #0089bd; --on-accent: var(--ink); --on-accent-head: var(--ink);
   --accent-text: #0079b0; --accent-text-sm: #006a9a; --accent-on-ink: #00a3e0;
@@ -311,7 +354,7 @@ html[data-kleur="kobalt"] {
   .bar { gap: 12px; }
   .menu-btn {
     display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 0; border-radius: var(--pill);
-    background: var(--tint); color: var(--ink); font: 700 var(--fs-ui)/1 "Archivo", system-ui, sans-serif; cursor: pointer;
+    background: var(--paper); color: var(--ink); font: 700 var(--fs-ui)/1 "Archivo", system-ui, sans-serif; cursor: pointer;
     min-width: 84px; justify-content: center;
   }
   .btn-call { margin-left: auto; }
@@ -365,9 +408,13 @@ html[data-kleur="kobalt"] {
   .index a:nth-child(odd) { padding-left: 0; }
   .index b { font-size: 18px; }
   .ticket-spec { max-width: 150px; padding: 12px 14px; }
+  .sticker { top: 16px; right: 16px; width: 128px; padding: 12px; font-size: 11px; }
+  .sticker b { font-size: 38px; }
+  .assort { padding: 64px 0; }
+  .offer { padding: 14px 16px; }
   .ticket-spec .rating { font-size: var(--fs-sm); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .nav a, .text-link, .score-link, .index b { transition: none; }
+  .btn, .nav a, .text-link, .score-link, .index b, .sticker { transition: none; }
 }

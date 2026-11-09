@@ -63,6 +63,7 @@ document.addEventListener("keydown", function (e) {
 
 // Palette picker, only for previewing colours: shown when the URL contains ?kleuren.
 var PALETTES = [
+  { id: "huisstijl", name: "Huisstijl", swatch: "#ffe500" },
   { id: "magenta", name: "Magenta", swatch: "#e4007c" },
   { id: "cyaan", name: "Cyaan", swatch: "#00a3e0" },
   { id: "geel", name: "Geel", swatch: "#ffd500" },
@@ -88,7 +89,7 @@ if (params.has("kleuren")) {
     b.setAttribute("aria-pressed", String(p.id === current));
     b.addEventListener("click", function () {
       document.documentElement.setAttribute("data-kleur", p.id);
-      try { localStorage.setItem("inkstation-kleur", p.id); } catch (e) {}
+      try { localStorage.setItem("inkstation-kleur-v2", p.id); } catch (e) {}
       if (themeMeta) themeMeta.setAttribute("content", p.swatch);
       picker.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
     });
