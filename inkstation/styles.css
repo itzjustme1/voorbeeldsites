@@ -408,12 +408,19 @@ html[data-kleur="kobalt"] {
   .index a { padding: 22px 12px 24px; }
   .index a:nth-child(odd) { padding-left: 0; }
   .index b { font-size: 18px; }
-  .ticket-spec { max-width: 150px; padding: 12px 14px; }
-  .sticker { top: 16px; right: 16px; width: 128px; padding: 12px; font-size: 11px; }
-  .sticker b { font-size: 38px; }
+  /* Phones: the photo boxes are too short for a card on top, so the card moves under the photo as a caption
+     and the photo gets a fixed 4:3 frame. The map and the score panel keep their own layout. */
+  .hero-panel, .panel-media:has(> .duotone) { min-height: 0; display: flex; flex-direction: column; }
+  .hero-panel .duotone, .panel-media > .duotone { position: relative; inset: auto; aspect-ratio: 4 / 3; height: auto; }
+  .hero-panel .ticket, .panel-media:has(> .duotone) .ticket { order: 1; position: static; max-width: none; padding: 16px var(--gutter) 20px; background: var(--tint); }
+  #inkt .duotone { aspect-ratio: 16 / 10; object-position: center; }
+  #video .duotone { object-position: 50% 28%; }
+  .ticket-spec { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 16px; }
+  .ticket-spec svg { margin: 0; }
+  .sticker { top: 16px; right: 16px; width: 116px; padding: 10px; font-size: 11px; }
+  .sticker b { font-size: 34px; }
   .assort { padding: 64px 0; }
   .offer { padding: 14px 16px; }
-  .ticket-spec .rating { font-size: var(--fs-sm); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
