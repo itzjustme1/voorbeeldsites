@@ -175,7 +175,7 @@ var nav = document.getElementById("nav");
 function setMenu(open) {
   nav.classList.toggle("is-open", open);
   menuBtn.setAttribute("aria-expanded", String(open));
-  menuBtn.textContent = open ? "Sluit" : "Menu";
+  menuBtn.querySelector(".menu-label").textContent = open ? "Sluit" : "Menu";
   // Lock the page behind the full-height menu so it can't scroll underneath.
   document.documentElement.style.overflow = open ? "hidden" : "";
 }
