@@ -1,0 +1,50 @@
+{
+  "openingstijden": {
+    "maandag": {
+      "open": true,
+      "van": "13:00",
+      "tot": "17:30"
+    },
+    "dinsdag": {
+      "open": true,
+      "van": "10:00",
+      "tot": "17:30"
+    },
+    "woensdag": {
+      "open": true,
+      "van": "10:00",
+      "tot": "17:30"
+    },
+    "donderdag": {
+      "open": true,
+      "van": "10:00",
+      "tot": "17:30"
+    },
+    "vrijdag": {
+      "open": true,
+      "van": "10:00",
+      "tot": "17:30"
+    },
+    "zaterdag": {
+      "open": false,
+      "van": "",
+      "tot": ""
+    },
+    "zondag": {
+      "open": false,
+      "van": "",
+      "tot": ""
+    }
+  },
+  "afwijkend": [],
+  "aanbieding": {
+    "tonen": true,
+    "bovenregel": "20 jaar Inkstation",
+    "prijs": "€10",
+    "onderregel": "Portretfoto, ingelijst",
+    "kop": "20 jaar Inkstation: een portretfoto, ingelijst, voor maar €10.",
+    "tekst": "Kom langs voor een mooie portretfoto van uzelf of uw kinderen, meteen ingelijst.",
+    "kleine_letters": "Tijdelijke actie.",
+    "tot_en_met": ""
+  }
+}
