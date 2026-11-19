@@ -144,17 +144,30 @@ function renderOffer(o) {
   set("[data-offer-klein]", o.kleine_letters + (o.tot_en_met ? (o.kleine_letters ? " " : "") + "Geldig t/m " + niceDate(o.tot_en_met) + "." : ""));
 }
 
+function apply(data) {
+  if (data.openingstijden) info.openingstijden = data.openingstijden;
+  info.afwijkend = data.afwijkend || [];
+  renderHours();
+  renderOffer(data.aanbieding);
+}
+
 renderHours();
-// no-cache: the browser checks with the server every time, so Rens's change shows as soon as the site is rebuilt.
-fetch("content/winkel.json", { cache: "no-cache" })
-  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(function (data) {
-    if (data.openingstijden) info.openingstijden = data.openingstijden;
-    info.afwijkend = data.afwijkend || [];
-    renderHours();
-    renderOffer(data.aanbieding);
-  })
-  .catch(function () { /* keep the hours and offer that are already in the HTML */ });
+// Live preview inside the admin page (admin/?voorbeeld in an iframe): the form sends its unsaved data here.
+var PREVIEW = /[?&]voorbeeld\b/.test(location.search) && window.parent !== window;
+if (PREVIEW) {
+  window.addEventListener("message", function (e) {
+    if (e.origin !== location.origin || !e.data || e.data.type !== "inkstation-voorbeeld") return;
+    apply(e.data.data);
+    var target = e.data.focus === "openingstijden" ? document.getElementById("langskomen") : null;
+    window.scrollTo({ top: target ? target.offsetTop - 80 : 0, behavior: "instant" });
+  });
+} else {
+  // no-cache: the browser checks with the server every time, so Rens's change shows straight away.
+  fetch("content/winkel.json", { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(apply)
+    .catch(function () { /* keep the hours and offer that are already in the HTML */ });
+}
 
 // Mobile menu
 var menuBtn = document.querySelector(".menu-btn");
