@@ -54,8 +54,8 @@
   --fs-lead: 20px;
   --fs-h3: 24px;
   --fs-h2: clamp(40px, 6.2vw, 88px);
-  /* H1 is sized to its column: "PASFOTO'S." is 7.6em wide at this width, so 13cqi always fits. */
-  --fs-h1: clamp(40px, 13cqi, 116px);
+  /* Blue for "Inktpatronen" in the hero, deep enough to read on the yellow (5.6:1) */
+  --blue: #0057b8;
 
   --wrap: 1240px;
   --gutter: 32px;
@@ -119,10 +119,12 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 .text-link:hover { color: var(--accent-text); }
 
 /* Wordmark: INKSTATION in red bold italic, like the shop sign */
-.logo { display: inline-flex; align-items: baseline; color: var(--logo); text-decoration: none; font-weight: 800; font-stretch: 112%; font-size: 26px; letter-spacing: -.005em; line-height: 1; }
+.logo { display: inline-flex; align-items: center; gap: .2em; color: var(--logo); text-decoration: none; font-weight: 800; font-stretch: 112%; font-size: 26px; letter-spacing: -.005em; line-height: 1; }
 /* The slant is a skew of the upright font, so no separate italic file is needed and every browser draws it the same */
 .logo span { display: inline-block; transform: skewX(-11deg); }
 .logo-tile { background: var(--brand); padding: .4em .6em; }
+/* The shop window's three ink drops (red, blue, yellow) sit right after the name, a little taller than the capitals */
+.drops { flex: none; width: 1.1em; height: 1.06em; margin-top: -.12em; }
 
 /* Header */
 .site-head { position: sticky; top: 0; z-index: 20; background: var(--brand); box-shadow: 0 1px 0 rgba(17, 17, 20, .12); }
@@ -136,22 +138,41 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 
 /* Hero: copy on paper, the photo panel bleeds to the right edge */
 .hero { position: relative; background: var(--brand); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); min-height: min(820px, calc(100dvh - 115px)); }
+.hero-sign {
+  container-type: inline-size;
+  padding: 56px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter))) 40px;
+}
+.hero-sign .where { margin-bottom: 16px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); min-height: 520px; }
 .hero-copy {
   container-type: inline-size;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 88px 56px 96px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+  padding: 40px 56px 72px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
 }
 .where { font-size: var(--fs-ui); font-weight: 700; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
 .where::before { content: ""; width: 12px; height: 12px; background: var(--accent); }
-.hero h1 { font-size: var(--fs-h1); margin-bottom: 36px; }
-.hero h1 .line { display: block; }
-/* Accent words: coloured, plus a highlighter stroke that only shows when --accent-mark is set */
-.hero h1 .line:last-child, .soft {
-  color: var(--accent-text);
-  text-decoration: underline; text-decoration-color: var(--accent-mark); text-decoration-thickness: .3em;
-  text-underline-offset: -.14em; text-decoration-skip-ink: none;
+/* Hero headline is the shop name itself, across the full width (Rens: "mag echt wel kapitaler").
+   "INKSTATION" plus the drops is 8.57em wide (measured), so 97cqi / 8.7 always fits. */
+.hero-mark {
+  display: flex; align-items: center; gap: .16em; margin: 0;
+  font-size: clamp(36px, calc(97cqi / 8.7), 176px); font-weight: 800; font-stretch: 112%;
+  line-height: 1; letter-spacing: -.005em; text-transform: uppercase; color: var(--logo);
 }
+.mark-word { display: inline-block; transform: skewX(-11deg); }
+.hero-mark .drops { width: 1.12em; height: 1.08em; }
+/* Under the name, the four product groups in the colours Rens asked for: blue, black, red, red */
+.groups {
+  list-style: none; margin: 0 0 36px; padding: 0;
+  /* "PORTRETFOTO'S" is the longest line at 10.9em */
+  font-size: clamp(24px, calc(97cqi / 11.2), 56px); font-weight: 800; font-stretch: 125%;
+  line-height: 1; letter-spacing: -.01em; text-transform: uppercase;
+}
+.groups li + li { margin-top: .08em; }
+.groups a { text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: .08em; text-underline-offset: .12em; transition: text-decoration-color var(--dur) var(--ease); }
+.groups a:hover { text-decoration-color: currentColor; }
+.g-blue { color: var(--blue); }
+.g-ink { color: var(--ink); }
+.g-red { color: var(--accent-text); }
 .hero .lead { margin-bottom: 36px; color: var(--ink-2); }
 
 .hero-panel { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
@@ -186,7 +207,7 @@ h3 { margin: 0 0 8px; font-size: var(--fs-h3); line-height: 1.2; font-weight: 70
 
 /* Signature moment: each headline line is "printed" left to right, once, on load */
 @media (prefers-reduced-motion: no-preference) {
-  .hero h1 .line { animation: print-pass .7s cubic-bezier(.215, .61, .355, 1) both; animation-delay: calc(120ms + var(--i) * 120ms); }
+  .groups li { animation: print-pass .7s cubic-bezier(.215, .61, .355, 1) both; animation-delay: calc(120ms + var(--i) * 120ms); }
 }
 @keyframes print-pass {
   from { clip-path: inset(-10% 100% -10% 0); }
@@ -213,8 +234,10 @@ h2.panel-title { font-size: clamp(28px, calc(97cqi / var(--em, 7.6)), 132px); ma
 }
 .panel .lead { color: var(--ink-2); margin-bottom: 36px; }
 .panel-media { position: relative; margin: 0; background: var(--paper); overflow: hidden; }
-.duotone-wheel { object-position: 35% 50%; }
-#inkt .duotone { object-position: 24% 50%; }
+#inkt .duotone { object-position: 56% 50%; }
+/* Rijbewijs: a drawn licence card instead of a photo, centred on the tint */
+.panel-art { background: var(--tint); display: grid; place-items: center; }
+.art { width: min(84%, 620px); height: auto; margin-bottom: 120px; }
 
 /* Services index right under the hero: four jump links on ink */
 .index {
@@ -370,7 +393,8 @@ html[data-kleur="kobalt"] {
   .nav a { padding: 18px 0; border-bottom: 1px solid var(--line); }
   .nav a:last-child { color: var(--accent-text); text-decoration: underline; text-decoration-color: var(--accent-mark); text-decoration-thickness: .3em; text-underline-offset: -.14em; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-  .hero-copy { padding: 64px var(--gutter) 64px; }
+  .hero-sign { padding: 48px var(--gutter) 24px; }
+  .hero-copy { padding: 24px var(--gutter) 64px; }
   .hero-panel { min-height: 420px; }
   .panel, .panel-flip { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .panel-flip .panel-media { order: 0; }
@@ -391,9 +415,12 @@ html[data-kleur="kobalt"] {
   .call-long { display: none; }
   .call-short { display: inline; }
   .btn-call { padding: 0 18px; }
-  .hero-copy { padding: 44px var(--gutter) 48px; }
+  .hero-sign { padding: 36px var(--gutter) 16px; }
+  /* Phones: keep the name clearly bigger than the product groups under it */
+  .groups { font-size: 24px; }
+  .hero-copy { padding: 16px var(--gutter) 48px; }
   .where { margin-bottom: 20px; }
-  .hero h1 { margin-bottom: 24px; }
+  .groups { margin-bottom: 24px; }
   .hero .lead { margin-bottom: 28px; }
   .actions { flex-direction: column; }
   .actions .btn { width: 100%; }
@@ -414,6 +441,9 @@ html[data-kleur="kobalt"] {
   .hero-panel .duotone, .panel-media > .duotone { position: relative; inset: auto; aspect-ratio: 4 / 3; height: auto; }
   .hero-panel .ticket, .panel-media:has(> .duotone) .ticket { order: 1; position: static; max-width: none; padding: 16px var(--gutter) 20px; background: var(--tint); }
   #inkt .duotone { aspect-ratio: 16 / 10; object-position: center; }
+  .panel-art { display: flex; flex-direction: column; min-height: 0; }
+  .panel-art .art { width: 88%; margin: 28px auto; }
+  .panel-art .ticket { order: 1; position: static; max-width: none; padding: 16px var(--gutter) 20px; background: var(--paper); }
   #video .duotone { object-position: 50% 28%; }
   .ticket-spec { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 16px; }
   .ticket-spec svg { margin: 0; }
@@ -424,5 +454,5 @@ html[data-kleur="kobalt"] {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .nav a, .text-link, .score-link, .index b, .sticker { transition: none; }
+  .btn, .nav a, .text-link, .score-link, .index b, .sticker, .groups a { transition: none; }
 }
