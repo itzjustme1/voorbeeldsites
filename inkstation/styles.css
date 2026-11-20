@@ -273,6 +273,7 @@ p { margin: 0; }
 .site-foot { background: var(--ink); color: var(--on-ink); }
 .foot { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px; padding-top: 48px; padding-bottom: 56px; font-size: var(--fs-sm); }
 .foot-meta { display: grid; gap: 6px; max-width: 640px; text-align: right; }
+.foot-meta a { color: var(--paper); text-underline-offset: 3px; }
 
 @media (max-width: 1080px) {
   .nav { gap: 20px; }
