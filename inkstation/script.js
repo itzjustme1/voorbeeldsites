@@ -133,12 +133,7 @@ function renderOffer(o) {
     document.querySelectorAll(sel).forEach(function (el) { el.textContent = text || ""; el.hidden = !text; });
   };
   document.querySelectorAll("[data-offer]").forEach(function (el) { el.hidden = !show; });
-  var sticker = document.querySelector("[data-offer-sticker]");
-  if (sticker) sticker.hidden = !(show && o.prijs);
   if (!show) return;
-  set("[data-offer-boven]", o.bovenregel);
-  set("[data-offer-prijs]", o.prijs);
-  set("[data-offer-onder]", o.onderregel);
   set("[data-offer-kop]", o.kop);
   set("[data-offer-tekst]", o.tekst);
   set("[data-offer-klein]", o.kleine_letters + (o.tot_en_met ? (o.kleine_letters ? " " : "") + "Geldig t/m " + niceDate(o.tot_en_met) + "." : ""));

@@ -22,8 +22,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=62">
-<script src="script.js?v=30" defer></script>
+<link rel="stylesheet" href="styles.css?v=64">
+<script src="script.js?v=31" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Regular hours only; keep in step with content/winkel.json. -->
 <script type="application/ld+json">
 {
@@ -86,7 +86,7 @@
 
 <main id="main">
   <!-- Hero: the name as on the shop sign, the product groups in the colours Rens asked for, and a card with what
-       visitors look for first (open now?, address, phone, rating). The round sticker is the current offer. -->
+       visitors look for first (open now?, phone, rating). No address up here: Rens asked not to name the location in the opening. -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-copy">
@@ -100,21 +100,15 @@
         </ul>
         <p class="lead">Inktpatronen en lasertoners voor een hele scherpe prijs, vaak veel goedkoper dan de webshops. Mooie pasfoto's en portretfoto's, ook van baby's. En u kunt hier uw rijbewijs digitaal verlengen en oude video's laten digitaliseren.</p>
       </div>
-      <aside class="visit-card" aria-label="Openingstijden en adres">
-        <a class="sticker" href="#aanbieding" data-offer-sticker><span data-offer-boven>20 jaar Inkstation</span><b data-offer-prijs>€10</b><span data-offer-onder>Portretfoto, ingelijst</span></a>
+      <aside class="visit-card" aria-label="Openingstijden en contact">
         <p class="status" data-status>Ma 13:00–17:30 · di–vr 10:00–17:30</p>
         <p class="notice" data-notice hidden></p>
-        <div class="vc-row">
-          <p class="vc-label">Adres</p>
-          <p class="vc-value">Passage 63<br>2741 HB Waddinxveen</p>
-          <a class="text-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
-        </div>
         <div class="vc-row">
           <p class="vc-label">Bellen</p>
           <a class="vc-phone" href="tel:+31182630949">0182 630 949</a>
         </div>
         <p class="vc-rating"><span class="stars" style="--rating: 4.5" aria-hidden="true"></span><b>4,5</b> op Google, uit 110 reviews</p>
-        <a class="btn btn-accent btn-block" href="#langskomen">Openingstijden</a>
+        <a class="btn btn-accent btn-block" href="#langskomen">Openingstijden &amp; route</a>
       </aside>
     </div>
   </section>
@@ -270,6 +264,7 @@
     </div>
     <div class="visit-copy">
       <h2 class="title" id="visit-title">Kom langs.</h2>
+      <p class="visit-address">Passage 63<br>2741 HB Waddinxveen</p>
       <p class="status-line" data-status-line hidden></p>
       <p class="notice notice-visit" data-notice hidden></p>
       <dl class="hours-mini" data-hours>

@@ -9,7 +9,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="admin.css?v=6">
-<script src="admin.js?v=3" defer></script>
+<script src="admin.js?v=4" defer></script>
 </head>
 <body>
 <!-- Beheerpagina voor Rens: openingstijden, vakantie en de aanbieding. Opslaan gaat via api.php naar ../content/winkel.json. -->
@@ -63,7 +63,7 @@
           <h2 id="h-offer">Aanbieding</h2>
           <label class="switch"><input type="checkbox" data-bind="aanbieding.tonen"><span class="switch-ui" aria-hidden="true"></span><span class="switch-text">Op de site</span></label>
         </div>
-        <p class="card-intro">Staat als rode balk op de site, en als ronde sticker op de foto bovenaan.</p>
+        <p class="card-intro">Staat als rode balk op de site, tussen Inkt en Pasfoto's.</p>
         <div class="offer-fields" data-when="aanbieding.tonen">
           <label class="field">
             <span class="field-label">Kop</span>
@@ -85,16 +85,6 @@
           </div>
           <p class="hint">Na de laatste dag verdwijnt de aanbieding vanzelf van de site.</p>
 
-          <div class="sticker-edit">
-            <div class="sticker-mini" aria-hidden="true"><span data-mirror="aanbieding.bovenregel"></span><b data-mirror="aanbieding.prijs"></b><span data-mirror="aanbieding.onderregel"></span></div>
-            <div class="sticker-fields">
-              <p class="field-label">Ronde sticker <i>(kort houden)</i></p>
-              <input type="text" maxlength="32" data-bind="aanbieding.bovenregel" aria-label="Sticker, bovenste regel" placeholder="Bovenste regel">
-              <input type="text" maxlength="8" data-bind="aanbieding.prijs" aria-label="Sticker, prijs of korting" placeholder="€10 of -25%" class="big">
-              <input type="text" maxlength="32" data-bind="aanbieding.onderregel" aria-label="Sticker, onderste regel" placeholder="Onderste regel">
-              <p class="hint">Laat de middelste regel leeg als u geen sticker wilt.</p>
-            </div>
-          </div>
         </div>
       </section>
 

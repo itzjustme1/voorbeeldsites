@@ -198,14 +198,13 @@ $("add-period").onclick = function () {
   last.querySelector('[data-k="van"]').focus();
 };
 
-// The little sticker in the form shows what the round sticker on the site will say.
+// Grey out the offer fields while the offer is switched off.
 function mirror() {
   document.querySelectorAll("[data-mirror]").forEach(function (el) {
     el.textContent = get(el.getAttribute("data-mirror"));
   });
   var o = state.aanbieding;
   document.querySelector(".offer-fields").classList.toggle("is-off", !o.tonen);
-  document.querySelector(".sticker-mini").classList.toggle("is-empty", !o.prijs);
 }
 
 function dirty() { return JSON.stringify(state) !== savedJSON; }
