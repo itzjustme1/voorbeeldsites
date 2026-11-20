@@ -18,11 +18,11 @@ button, input, textarea { font: inherit; color: inherit; }
 p { margin: 0; }
 
 /* Wordmark */
-.mark { display: inline-flex; align-items: flex-end; gap: .24em; margin: 0; color: var(--red); text-decoration: none;
+.mark { display: inline-flex; align-items: flex-end; gap: .16em; margin: 0; color: var(--red); text-decoration: none;
   font-weight: 800; font-stretch: 112%; line-height: 1; letter-spacing: -.005em; }
 .mark span { display: inline-block; transform: skewX(-11deg); }
-.drops { flex: none; width: calc(1.2em * 43 / 64); height: 1.2em; margin-bottom: -.02em; }
-.login .mark .drops { width: calc(1.6em * 43 / 75); height: 1.6em; }
+.drops { flex: none; width: calc(1.2em * 57 / 53); height: 1.2em; margin-bottom: -.04em; }
+.login .mark .drops { width: calc(1.3em * 57 / 53); height: 1.3em; }
 .mark-small { font-size: 22px; }
 
 /* Buttons */

@@ -22,7 +22,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=53">
+<link rel="stylesheet" href="styles.css?v=62">
 <script src="script.js?v=30" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Regular hours only; keep in step with content/winkel.json. -->
 <script type="application/ld+json">
@@ -52,7 +52,6 @@
 </script>
 <!--
   Photos: Wikimedia Commons, stored in img/ as black-and-white WebP (grayscale + 10% contrast baked in, 800/1280/1800 wide).
-  - Canon_EOS_R5_Mark_II_(front,_no_body_cap).jpg, D. Benjamin Miller, CC0
   - Canon_PG-810_CL-811_ink_cartridge.JPG, eFilm, CC BY-SA 4.0 (same Canon FINE cartridge type as the 545)
   - Super-8-mm-film-on-a-spool-02.jpg, CEphoto, Uwe Aranas, CC BY-SA 3.0
   img/rijbewijs.svg is drawn for this site: a generic licence card, no real document or person.
@@ -61,10 +60,9 @@
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <!-- The ink drops from the shop window, drawn after the window sticker: tall glossy drops, red / blue (higher) / yellow, with the small drips above.
-       #drops is the full version for the big name; #drops-s leaves the drips out for small sizes (menu bar, footer). -->
-  <symbol id="drops" viewBox="-1 0 43 75"><defs><radialGradient id="dgr" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#ff6a5e"/><stop offset=".42" stop-color="#e30613"/><stop offset="1" stop-color="#990610"/></radialGradient><radialGradient id="dgb" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#8fd0ff"/><stop offset=".42" stop-color="#1a8fdc"/><stop offset="1" stop-color="#0a5591"/></radialGradient><radialGradient id="dgy" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#fff4a8"/><stop offset=".42" stop-color="#f7bf00"/><stop offset="1" stop-color="#c48600"/></radialGradient></defs><g transform="translate(6.3 3) scale(0.3)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgr)"/></g><g transform="translate(6.5 15.5) scale(0.34)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgr)"/></g><g transform="translate(17.8 0) scale(0.3)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgb)"/></g><g transform="translate(29.3 5) scale(0.3)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgy)"/></g><g transform="translate(29.5 17.5) scale(0.34)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgy)"/></g><g transform="translate(0 24) rotate(-4 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgr)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g><g transform="translate(11.5 12) rotate(0 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgb)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g><g transform="translate(23 26) rotate(4 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dgy)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g></symbol>
-  <symbol id="drops-s" viewBox="-1 11 43 64"><defs><radialGradient id="dsr" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#ff6a5e"/><stop offset=".42" stop-color="#e30613"/><stop offset="1" stop-color="#990610"/></radialGradient><radialGradient id="dsb" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#8fd0ff"/><stop offset=".42" stop-color="#1a8fdc"/><stop offset="1" stop-color="#0a5591"/></radialGradient><radialGradient id="dsy" cx="38%" cy="80%" r="75%" fx="34%" fy="84%"><stop offset="0" stop-color="#fff4a8"/><stop offset=".42" stop-color="#f7bf00"/><stop offset="1" stop-color="#c48600"/></radialGradient></defs><g transform="translate(0 24) rotate(-4 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dsr)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g><g transform="translate(11.5 12) rotate(0 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dsb)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g><g transform="translate(23 26) rotate(4 9 39)"><path d="M9 0C9.6 14 18 24 18 39a9 9 0 0 1-18 0C0 24 8.4 14 9 0Z" fill="url(#dsy)"/><ellipse cx="5.6" cy="41" rx="1.9" ry="3.2" transform="rotate(16 5.6 41)" fill="#fff" opacity=".8"/></g></symbol>
+  <!-- The three ink drops from the shop window (red, blue raised in the middle, yellow), drawn flat like a cut-out sticker:
+       the background colour runs around each drop to separate them. Used next to every INKSTATION. -->
+  <symbol id="drops" viewBox="-7 -3 57 53"><g style="stroke: var(--brand, #ffe500)" stroke-width="2.2" paint-order="stroke" stroke-linejoin="round"><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#e30613" transform="translate(0 9) rotate(-4 10 26)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#1a8fdc" transform="translate(11.5 0)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#f5b400" transform="translate(23 10) rotate(4 10 26)"/></g></symbol>
 </svg>
 
 <div class="concept" role="note">Voorbeeldontwerp door Valentijn de Grijff. Dit is nog niet de echte website van Inkstation.</div>
@@ -72,7 +70,7 @@
 <header class="site-head">
   <div class="wrap bar">
     <a class="logo" href="#top" aria-label="Inkstation, naar boven">
-      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops-s"/></svg>
+      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
     </a>
     <nav class="nav" id="nav" aria-label="Hoofdmenu">
       <a href="#inkt">Inkt &amp; lasertoner</a>
@@ -92,7 +90,7 @@
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="where">Sinds 2005</p>
+        <p class="since">Sinds 2005</p>
         <h1 class="hero-mark" id="hero-title"><span class="mark-word">Inkstation</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg></h1>
         <ul class="groups" aria-label="Wat u bij Inkstation vindt">
           <li class="g-blue" style="--i:0"><a href="#inkt">Inktpatronen</a></li>
@@ -115,9 +113,36 @@
           <p class="vc-label">Bellen</p>
           <a class="vc-phone" href="tel:+31182630949">0182 630 949</a>
         </div>
-        <p class="vc-rating"><span class="stars" aria-hidden="true">★★★★★</span><b>4,5</b> op Google, uit 110 reviews</p>
+        <p class="vc-rating"><span class="stars" style="--rating: 4.5" aria-hidden="true"></span><b>4,5</b> op Google, uit 110 reviews</p>
         <a class="btn btn-accent btn-block" href="#langskomen">Openingstijden</a>
       </aside>
+    </div>
+  </section>
+
+  <!-- The blue band from the bottom of the shop window, with the brands he stocks -->
+  <div class="brands" aria-label="Merken">
+    <p class="wrap brands-in"><span>HP</span><span>Canon</span><span>Epson</span><span>Brother</span><span class="brands-more">en meer</span></p>
+  </div>
+
+  <!-- Services: same build each time (copy + framed photo), alternating sides, normal height. -->
+  <section class="svc" id="inkt" aria-labelledby="inkt-title">
+    <div class="wrap svc-grid">
+      <div class="svc-copy">
+        <h2 class="title" id="inkt-title">Inkt voor minder.</h2>
+        <p class="lead">Inktpatronen en lasertoners voor een hele scherpe prijs. Vooral setjes zijn hier vaak veel goedkoper dan bij 123inkt, MediaMarkt en andere winkels. Gewoon in de winkel, zonder verzendkosten.</p>
+        <ul class="facts">
+          <li><b>Inktpatronen</b>Los of als setje met 4 kleuren, voor Epson, Brother, Canon en HP. Neem uw lege patroon mee, dan heeft u zeker de goede.</li>
+          <li><b>Lasertoners</b>Zeer voordelig. Vraag vrijblijvend een prijsopgave: het verschil kan flink zijn.</li>
+          <li><b>Refill</b>Uw lege Canon- of HP-patroon voordelig laten navullen.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
+          <a class="btn btn-line" href="mailto:inkstation.waddinxveen@gmail.com?subject=Prijsopgave%20lasertoner">Prijsopgave mailen</a>
+        </div>
+      </div>
+      <figure class="svc-media">
+        <img src="img/canon-1280.webp" srcset="img/canon-800.webp 800w, img/canon-1280.webp 1280w, img/canon-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" width="1800" height="1140" alt="Twee Canon-inktpatronen, zwart en kleur." loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 
@@ -133,35 +158,10 @@
     </div>
   </section>
 
-  <!-- Services: same build each time (copy + framed photo), alternating sides, normal height. -->
-  <section class="svc" id="inkt" aria-labelledby="inkt-title">
-    <div class="wrap svc-grid">
-      <div class="svc-copy">
-        <p class="where">Inkt &amp; lasertoner</p>
-        <h2 class="title" id="inkt-title">Inkt voor <span>minder.</span></h2>
-        <p class="lead">Inktpatronen en lasertoners voor een hele scherpe prijs. Vooral setjes zijn hier vaak veel goedkoper dan bij 123inkt, MediaMarkt en andere winkels. Gewoon in de winkel, zonder verzendkosten.</p>
-        <ul class="facts">
-          <li><b>Inktpatronen</b>Los of als setje met 4 kleuren, voor Epson, Brother, Canon en HP. Neem uw lege patroon mee, dan heeft u zeker de goede.</li>
-          <li><b>Lasertoners</b>Zeer voordelig. Vraag vrijblijvend een prijsopgave: het verschil kan flink zijn.</li>
-          <li><b>Refill</b>Uw lege Canon- of HP-patroon voordelig laten navullen.</li>
-        </ul>
-        <div class="actions">
-          <a class="btn btn-accent" href="tel:+31182630949">Bel 0182 630 949</a>
-          <a class="btn btn-line" href="mailto:inkstation.waddinxveen@gmail.com?subject=Prijsopgave%20lasertoner">Prijsopgave mailen</a>
-        </div>
-      </div>
-      <figure class="svc-media">
-        <img src="img/canon-1280.webp" srcset="img/canon-800.webp 800w, img/canon-1280.webp 1280w, img/canon-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" width="1800" height="1140" alt="Twee Canon-inktpatronen, zwart en kleur." loading="lazy" decoding="async">
-        <figcaption class="tag">Setjes vaak veel goedkoper dan bij 123inkt of MediaMarkt</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <section class="svc svc-flip svc-tint" id="pasfoto" aria-labelledby="pasfoto-title">
     <div class="wrap svc-grid">
       <div class="svc-copy">
-        <p class="where">Pasfoto's &amp; portretten</p>
-        <h2 class="title" id="pasfoto-title">Pasfoto's en portretfoto's, <span>ook voor baby's.</span></h2>
+        <h2 class="title" id="pasfoto-title">Pasfoto's en portretfoto's, ook voor baby's.</h2>
         <p class="lead">Wij maken mooie, geschikte pasfoto's voor uw paspoort, ID-kaart en rijbewijs. En net zo goed voor de baby: we nemen er de tijd voor.</p>
         <ul class="facts">
           <li><b>Paspoort &amp; ID</b>Volgens de eisen van de overheid, 35 × 45 mm.</li>
@@ -172,9 +172,17 @@
           <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Inkstation+Waddinxveen+Passage+63+2741HB" rel="noopener" target="_blank">Route plannen</a>
         </div>
       </div>
-      <figure class="svc-media">
-        <img src="img/camera-1280.webp" srcset="img/camera-800.webp 800w, img/camera-1280.webp 1280w, img/camera-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" width="1800" height="1350" alt="Een fotocamera, van voren gezien." loading="lazy" decoding="async">
-        <figcaption class="tag">35 × 45 mm, volgens de eisen van de overheid</figcaption>
+      <figure class="svc-media svc-spec">
+        <svg viewBox="0 0 400 480" role="img" aria-labelledby="spec-title">
+          <title id="spec-title">Formaat van een pasfoto: 35 bij 45 millimeter.</title>
+          <rect class="spec-frame" x="60" y="40" width="280" height="360"/>
+          <path class="spec-face" d="M200 104c-44 0-70 34-70 82 0 40 18 74 42 90v18c-54 10-90 38-104 86h264c-14-48-50-76-104-86v-18c24-16 42-50 42-90 0-48-26-82-70-82Z"/>
+          <path class="spec-guide" d="M60 150h280M60 300h280"/>
+          <path class="spec-line" d="M60 436h280M60 428v16M340 428v16M372 40v360M364 40h16M364 400h16"/>
+          <text class="spec-label" x="200" y="470" text-anchor="middle">35 mm</text>
+          <text class="spec-label" x="396" y="226" text-anchor="middle" transform="rotate(90 396 220)">45 mm</text>
+        </svg>
+        <figcaption>Pasfoto volgens de eisen van de overheid: 35 × 45 mm, gezicht recht in beeld.</figcaption>
       </figure>
     </div>
   </section>
@@ -182,8 +190,7 @@
   <section class="svc svc-ink" id="rijbewijs" aria-labelledby="rijbewijs-title">
     <div class="wrap svc-grid">
       <div class="svc-copy">
-        <p class="where">Rijbewijs verlengen</p>
-        <h2 class="title" id="rijbewijs-title">Rijbewijs verlengen <span>begint hier.</span></h2>
+        <h2 class="title" id="rijbewijs-title">Rijbewijs verlengen begint hier.</h2>
         <p class="lead">Uw rijbewijs veilig digitaal verlengen doen we al jaren. Uw foto en handtekening gaan digitaal naar de RDW: geen losse pasfoto nodig en geen extra afspraak op het gemeentehuis.</p>
         <ol class="steps">
           <li><b>Foto en handtekening</b>Wij maken uw pasfoto en nemen uw handtekening digitaal af. Met uw toestemming gaan ze direct naar de RDW.</li>
@@ -197,7 +204,6 @@
       </div>
       <figure class="svc-media svc-art">
         <img src="img/rijbewijs.svg" width="1000" height="720" alt="Een rijbewijs." loading="lazy" decoding="async">
-        <figcaption class="tag">Nieuw rijbewijs in ongeveer twee werkdagen</figcaption>
       </figure>
     </div>
   </section>
@@ -205,8 +211,7 @@
   <section class="svc svc-flip" id="video" aria-labelledby="video-title">
     <div class="wrap svc-grid">
       <div class="svc-copy">
-        <p class="where">Digitaliseren</p>
-        <h2 class="title" id="video-title">Oude video's? <span>Op USB.</span></h2>
+        <h2 class="title" id="video-title">Oude video's? Op USB.</h2>
         <p class="lead">Super 8-films, videobanden, audio en dvd's: Scanpaleis zet ze over op USB of dvd. U levert alles hier in de winkel in en krijgt het daarna netjes thuisbezorgd.</p>
         <ol class="steps">
           <li><b>Inleveren</b>Breng uw films, banden of audio naar Inkstation in de Passage.</li>
@@ -219,7 +224,6 @@
       </div>
       <figure class="svc-media">
         <img src="img/reel-1280.webp" srcset="img/reel-800.webp 800w, img/reel-1280.webp 1280w, img/reel-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" width="1800" height="1800" alt="Een spoel met Super 8-film." loading="lazy" decoding="async">
-        <figcaption class="tag">Officieel inleverpunt van Scanpaleis</figcaption>
       </figure>
     </div>
   </section>
@@ -242,8 +246,7 @@
   <section class="reviews" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap reviews-grid">
       <div>
-        <p class="where">Reviews op Google</p>
-        <h2 class="title" id="reviews-title">Geduldig. Vakman. <span>Top service.</span></h2>
+        <h2 class="title" id="reviews-title">Geduldig, vakman, top service.</h2>
         <ul class="said">
           <li>“De meneer was enorm geduldig en nam alle tijd!” <span>Celina</span></li>
           <li>“Rens is een vakman.” <span>Peter</span></li>
@@ -253,7 +256,7 @@
       </div>
       <div class="score">
         <p class="score-num" aria-hidden="true">4,5</p>
-        <p class="score-stars" aria-hidden="true">★★★★★</p>
+        <p class="stars stars-big" style="--rating: 4.5" aria-hidden="true"></p>
         <p class="score-txt">Gemiddeld op Google, uit 110 reviews</p>
         <a class="score-link" href="https://www.google.com/maps/place/Inkstation+Waddinxveen/@52.0445907,4.6539576,17z" rel="noopener" target="_blank">Alle reviews lezen</a>
       </div>
@@ -266,8 +269,7 @@
       <svg class="map-pin" viewBox="0 0 10 14" aria-hidden="true"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg>
     </div>
     <div class="visit-copy">
-      <p class="where">Passage 63 · 2741 HB Waddinxveen</p>
-      <h2 class="title" id="visit-title">Kom <span>langs.</span></h2>
+      <h2 class="title" id="visit-title">Kom langs.</h2>
       <p class="status-line" data-status-line hidden></p>
       <p class="notice notice-visit" data-notice hidden></p>
       <dl class="hours-mini" data-hours>
@@ -287,11 +289,11 @@
 <footer class="site-foot">
   <div class="wrap foot">
     <a class="logo logo-tile" href="#top" aria-label="Inkstation, naar boven">
-      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops-s"/></svg>
+      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
     </a>
     <div class="foot-meta">
       <p>Inkstation, sinds 2005 · Passage 63 · 2741 HB Waddinxveen · KvK 24377836</p>
-      <p>Foto's via Wikimedia Commons: D. Benjamin Miller (CC0), eFilm (CC BY-SA 4.0), CEphoto, Uwe Aranas (CC BY-SA 3.0). Kaart © OpenStreetMap-bijdragers.</p>
+      <p>Foto's via Wikimedia Commons: eFilm (CC BY-SA 4.0), CEphoto, Uwe Aranas (CC BY-SA 3.0). Kaart © OpenStreetMap-bijdragers.</p>
       <p>Voorbeeldontwerp door Valentijn de Grijff</p>
     </div>
   </div>

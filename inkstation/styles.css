@@ -39,7 +39,8 @@
   --fs-body: 17px;
   --fs-lead: 19px;
   --fs-h3: 22px;
-  --fs-title: clamp(34px, 4.4vw, 60px);
+  --fs-title: clamp(30px, 3.3vw, 44px);
+  --sign-blue: #1f3f9c;
 
   --wrap: 1200px;
   --gutter: 32px;
@@ -73,12 +74,13 @@ p { margin: 0; }
 /* Type */
 .where { font-size: var(--fs-ui); font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .where::before { content: ""; width: 12px; height: 12px; background: var(--accent); flex: none; }
+/* Section titles: plain sentence case. The loud uppercase is kept for the sign (name + product groups) only. */
 .title {
-  margin: 0 0 24px; max-width: 16em;
-  font-size: var(--fs-title); font-weight: 800; font-stretch: 125%; text-transform: uppercase;
-  line-height: .98; letter-spacing: -.01em; text-wrap: balance;
+  margin: 0 0 20px; max-width: 18em;
+  font-size: var(--fs-title); font-weight: 800; font-stretch: 106%;
+  line-height: 1.1; letter-spacing: -.015em; text-wrap: balance;
 }
-.title span { color: var(--accent-text); }
+.since { margin-bottom: 18px; font-size: var(--fs-ui); font-weight: 700; color: #4a4b50; }
 .lead { font-size: var(--fs-lead); line-height: 1.55; color: var(--ink-2); max-width: 34em; }
 
 /* Buttons */
@@ -103,11 +105,11 @@ p { margin: 0; }
 .ico { width: 18px; height: 18px; fill: currentColor; flex: none; }
 
 /* Wordmark: INKSTATION in red, slanted like the shop sign, with the window's ink drops */
-.logo { display: inline-flex; align-items: flex-end; gap: .24em; color: var(--logo); text-decoration: none; font-weight: 800; font-stretch: 112%; font-size: 24px; letter-spacing: -.005em; line-height: 1; }
+.logo { display: inline-flex; align-items: flex-end; gap: .16em; color: var(--logo); text-decoration: none; font-weight: 800; font-stretch: 112%; font-size: 24px; letter-spacing: -.005em; line-height: 1; }
 .logo span { display: inline-block; transform: skewX(-11deg); }
 .logo-tile { background: var(--brand); padding: .45em .6em .4em; }
-/* Small drops (no drips): 43 x 64 viewBox. The hero uses the full set with drips (43 x 75). */
-.drops { flex: none; width: calc(1.2em * 43 / 64); height: 1.2em; margin-bottom: -.02em; }
+/* The drop cluster (57 x 53 viewBox) is a little taller than the capitals and sits on the baseline */
+.drops { flex: none; width: calc(1.2em * 57 / 53); height: 1.2em; margin-bottom: -.04em; }
 
 /* Header */
 .site-head { position: sticky; top: 0; z-index: 20; background: var(--brand); box-shadow: 0 1px 0 rgba(17, 17, 20, .12); }
@@ -123,14 +125,14 @@ p { margin: 0; }
 .hero { background: var(--brand); padding: 72px 0 88px; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
 .hero-copy { container-type: inline-size; }
-/* "INKSTATION" plus the drops is 8.45em wide (measured), so 97cqi / 8.6 always fits the column. */
+/* "INKSTATION" plus the drops is 8.85em wide (measured), so 97cqi / 9 always fits the column. */
 .hero-mark {
-  display: flex; align-items: flex-end; gap: .24em; margin: 0 0 28px;
-  font-size: clamp(30px, calc(97cqi / 8.6), 132px); font-weight: 800; font-stretch: 112%;
+  display: flex; align-items: flex-end; gap: .16em; margin: 0 0 28px;
+  font-size: clamp(30px, calc(97cqi / 9), 132px); font-weight: 800; font-stretch: 112%;
   line-height: 1; letter-spacing: -.005em; text-transform: uppercase; color: var(--logo);
 }
 .mark-word { display: inline-block; transform: skewX(-11deg); }
-.hero-mark .drops { width: calc(1.6em * 43 / 75); height: 1.6em; }
+.hero-mark .drops { width: calc(1.3em * 57 / 53); height: 1.3em; }
 /* The four product groups in the colours Rens asked for: blue, black, red, red */
 .groups {
   list-style: none; margin: 0 0 28px; padding: 0;
@@ -160,7 +162,15 @@ p { margin: 0; }
 .vc-phone:hover { color: var(--accent-text); }
 .vc-rating { padding-top: 16px; border-top: 1px solid var(--line); font-size: var(--fs-ui); color: var(--ink-2); }
 .vc-rating b { color: var(--ink); margin-right: 4px; }
-.stars { color: #f2a900; letter-spacing: 1px; margin-right: 8px; }
+/* Star rating drawn to the real score: --rating 4.5 fills four and a half stars */
+.stars {
+  --size: 17px; --on: #f2a900; --off: #d9d8d2;
+  display: inline-block; vertical-align: -2px; width: calc(var(--size) * 5); height: var(--size); margin-right: 8px;
+  background: linear-gradient(90deg, var(--on) calc(var(--rating) / 5 * 100%), var(--off) 0);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x;
+}
+.stars-big { --size: 26px; --on: var(--brand); --off: #3a3b41; display: block; margin-top: 20px; }
 
 /* The offer as a round window sticker on the card corner (round because it is a link, like the buttons) */
 .sticker {
@@ -174,14 +184,13 @@ p { margin: 0; }
 .sticker:hover { background: var(--accent-deep); }
 .sticker[hidden] { display: none; }
 
-/* Signature moment: each product group is "printed" left to right, once, on load */
-@media (prefers-reduced-motion: no-preference) {
-  .groups li { animation: print-pass .7s cubic-bezier(.215, .61, .355, 1) both; animation-delay: calc(120ms + var(--i) * 110ms); }
-}
-@keyframes print-pass {
-  from { clip-path: inset(-10% 100% -10% 0); }
-  to { clip-path: inset(-10% 0 -10% 0); }
-}
+
+/* The blue band from the bottom of the shop window: the brands he stocks, in the sign's slanted letters */
+.brands { background: var(--sign-blue); color: var(--brand); }
+.brands-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 36px; margin: 0 auto; padding-top: 18px; padding-bottom: 18px;
+  font-size: 24px; font-weight: 800; font-stretch: 112%; text-transform: uppercase; letter-spacing: .02em; }
+.brands-in span { display: inline-block; transform: skewX(-11deg); }
+.brands-in .brands-more { color: var(--paper); text-transform: none; font-weight: 700; font-size: .75em; letter-spacing: 0; }
 
 /* Offer band (edited by Rens on /admin/) */
 .deal { background: var(--accent); color: var(--on-accent); padding: 44px 0 48px; }
@@ -202,10 +211,17 @@ p { margin: 0; }
 .svc-media { position: relative; margin: 0; }
 .svc-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--line); }
 #inkt .svc-media img { object-position: 56% 50%; }
-#pasfoto .svc-media img { object-position: 50% 45%; }
 #video .svc-media img { object-position: 50% 35%; }
-/* A label on the photo, like a price tag: square, sitting on the bottom edge */
-.tag { position: absolute; left: 20px; bottom: -18px; max-width: calc(100% - 40px); padding: 12px 16px; background: var(--brand); font-weight: 800; font-size: var(--fs-ui); line-height: 1.3; }
+.svc-media figcaption { margin-top: 14px; font-size: var(--fs-ui); color: var(--ink-2); }
+/* Pasfoto: the official 35 x 45 mm layout as the picture */
+.svc-spec { background: var(--paper); padding: 40px 48px 32px; }
+.svc-spec svg { width: min(100%, 340px); height: auto; margin: 0 auto; overflow: visible; }
+.svc-spec figcaption { text-align: center; }
+.spec-frame { fill: #f1efe8; stroke: var(--ink); stroke-width: 3; }
+.spec-face { fill: #d8d4c8; }
+.spec-guide { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 8 7; }
+.spec-line { fill: none; stroke: var(--ink); stroke-width: 2; }
+.spec-label { font: 700 22px "Archivo", sans-serif; fill: var(--ink); }
 
 .facts, .steps { list-style: none; margin: 0 0 32px; padding: 0; border-top: 3px solid var(--ink); max-width: 40em; counter-reset: step; }
 /* One row per fact or step: the name on the left, the explanation beside it */
@@ -217,8 +233,7 @@ p { margin: 0; }
 
 /* Rijbewijs: the one dark section */
 .svc-ink { background: var(--ink); color: var(--paper); }
-.svc-ink .title span, .svc-ink .steps li::before { color: var(--accent-on-ink); }
-.svc-ink .where::before { background: var(--accent-on-ink); }
+.svc-ink .steps li::before { color: var(--accent-on-ink); }
 .svc-ink .lead, .svc-ink .steps li { color: var(--on-ink); }
 .svc-ink .steps { border-top-color: var(--paper); }
 .svc-ink .steps li { border-bottom-color: var(--line-dark); }
@@ -244,7 +259,6 @@ p { margin: 0; }
 .said span { display: block; margin-top: 4px; font-size: var(--fs-ui); font-weight: 400; color: var(--ink-2); }
 .score { background: var(--ink); color: var(--paper); padding: 48px 40px; }
 .score-num { font-size: clamp(110px, 12vw, 168px); line-height: .8; font-weight: 800; font-stretch: 125%; letter-spacing: -.04em; color: var(--accent-on-ink); }
-.score-stars { margin-top: 18px; color: var(--accent-on-ink); font-size: 22px; letter-spacing: 2px; }
 .score-txt { margin-top: 8px; color: var(--on-ink); }
 .score-link { display: inline-block; margin-top: 16px; font-weight: 700; color: var(--paper); text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent-on-ink); }
 .score-link:hover { color: var(--accent-on-ink); }
@@ -335,8 +349,7 @@ p { margin: 0; }
   .btn-call { padding: 0 16px 0 14px; }
   .hero { padding: 36px 0 56px; }
   .hero-mark { margin-bottom: 20px; }
-  /* "PORTRETFOTO'S," is the longest word in a title (about 11.3em), so titles follow the screen width here */
-  .title { font-size: min(34px, 7.8vw); }
+  .title { font-size: 28px; }
   .groups { font-size: min(26px, calc(97cqi / 11.2)); margin-bottom: 20px; }
   .actions { flex-direction: column; }
   .actions .btn { width: 100%; }
@@ -344,7 +357,8 @@ p { margin: 0; }
   .status { padding-right: 84px; }
   .sticker { width: 112px; top: -48px; right: 8px; padding: 10px; font-size: 10px; }
   .sticker b { font-size: 32px; }
-  .tag { left: 12px; bottom: -16px; max-width: calc(100% - 24px); }
+  .brands-in { font-size: 17px; gap: 2px 18px; padding-top: 14px; padding-bottom: 14px; }
+  .svc-spec { padding: 28px 20px 24px; }
   .svc-art { padding: 28px 20px 44px; }
   .chips li { font-size: 16px; padding: 8px 12px; }
   .score { padding: 36px 28px; }
