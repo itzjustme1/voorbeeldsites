@@ -177,8 +177,6 @@ p { margin: 0; }
 .svc .lead { margin-bottom: 28px; }
 .svc-media { margin: 0; }
 .svc-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--line); }
-#inkt .svc-media img { object-position: 56% 50%; }
-#video .svc-media img { object-position: 50% 35%; }
 .svc-media figcaption { margin-top: 12px; font-size: var(--fs-ui); color: var(--ink-2); }
 
 .facts, .steps { list-style: none; margin: 0 0 30px; padding: 0; border-top: 1px solid var(--line); max-width: 38em; counter-reset: step; }
@@ -202,6 +200,7 @@ p { margin: 0; }
 /* Rijbewijs: the drawn licence card on a soft panel */
 .svc-art { background: var(--tint); border-radius: var(--radius); padding: 36px 28px 40px; }
 .svc-art img { aspect-ratio: auto; object-fit: contain; background: transparent; border-radius: 0; }
+.svc-tint .svc-art { background: var(--surface); box-shadow: var(--shadow); }
 
 /* Rest of the shop */
 .assort { padding: 72px 0; }
