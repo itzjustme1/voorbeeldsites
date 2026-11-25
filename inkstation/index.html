@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Inkstation Waddinxveen · Inktpatronen, lasertoners, pasfoto's en meer</title>
 <meta name="description" content="Inktpatronen en lasertoners voor een scherpe prijs, refill van Canon en HP, pasfoto's en portretten, rijbewijs digitaal verlengen en video digitaliseren. Inkstation, sinds 2005 in de Passage in Waddinxveen.">
-<meta name="theme-color" content="#ffe500">
+<meta name="theme-color" content="#faf8f3">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Inkstation Waddinxveen">
@@ -22,7 +22,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=65">
+<link rel="stylesheet" href="styles.css?v=73">
 <script src="script.js?v=31" defer></script>
 <!-- Structured data so Google can show address, phone and opening hours. Regular hours only; keep in step with content/winkel.json. -->
 <script type="application/ld+json">
@@ -63,15 +63,16 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <!-- The three ink drops from the shop window (red, blue raised in the middle, yellow), drawn flat like a cut-out sticker:
        the background colour runs around each drop to separate them. Used next to every INKSTATION. -->
-  <symbol id="drops" viewBox="-7 -3 57 53"><g style="stroke: var(--brand, #ffe500)" stroke-width="2.2" paint-order="stroke" stroke-linejoin="round"><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#e30613" transform="translate(0 9) rotate(-4 10 26)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#1a8fdc" transform="translate(11.5 0)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#f5b400" transform="translate(23 10) rotate(4 10 26)"/></g></symbol>
+  <symbol id="drops" viewBox="-7 -3 57 53"><g style="stroke: var(--drop-cut, #ffffff)" stroke-width="2.2" paint-order="stroke" stroke-linejoin="round"><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#e30613" transform="translate(0 9) rotate(-4 10 26)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#1a8fdc" transform="translate(11.5 0)"/><path d="M10 0C10 0 0 14 0 26a10 10 0 0 0 20 0C20 14 10 0 10 0Z" fill="#f5b400" transform="translate(23 10) rotate(4 10 26)"/></g></symbol>
 </svg>
 
 <div class="concept" role="note">Voorbeeldontwerp door Valentijn de Grijff. Dit is nog niet de echte website van Inkstation.</div>
 
 <header class="site-head">
   <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="Inkstation, naar boven">
-      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
+    <a class="logo" href="#top" aria-label="Inkstation Waddinxveen, naar boven">
+      <span class="logo-word" aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
+      <span class="logo-place" aria-hidden="true">Waddinxveen</span>
     </a>
     <nav class="nav" id="nav" aria-label="Hoofdmenu">
       <a href="#inkt">Inkt &amp; lasertoner</a>
@@ -92,7 +93,7 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="since">Sinds 2005</p>
-        <h1 class="hero-mark" id="hero-title"><span class="mark-word">Inkstation</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg></h1>
+        <h1 class="hero-mark" id="hero-title"><span class="mark-word">Inkstation</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg><span class="mark-place">Waddinxveen</span></h1>
         <ul class="groups" aria-label="Wat u bij Inkstation vindt">
           <li class="g-blue" style="--i:0"><a href="#inkt">Inktpatronen</a></li>
           <li class="g-ink" style="--i:1"><a href="#inkt">Lasertoners</a></li>
@@ -182,7 +183,7 @@
     </div>
   </section>
 
-  <section class="svc svc-ink" id="rijbewijs" aria-labelledby="rijbewijs-title">
+  <section class="svc" id="rijbewijs" aria-labelledby="rijbewijs-title">
     <div class="wrap svc-grid">
       <div class="svc-copy">
         <h2 class="title" id="rijbewijs-title">Rijbewijs verlengen begint hier.</h2>
@@ -203,7 +204,7 @@
     </div>
   </section>
 
-  <section class="svc svc-flip" id="video" aria-labelledby="video-title">
+  <section class="svc svc-flip svc-tint" id="video" aria-labelledby="video-title">
     <div class="wrap svc-grid">
       <div class="svc-copy">
         <h2 class="title" id="video-title">Oude video's? Op USB.</h2>
@@ -259,6 +260,7 @@
   </section>
 
   <section class="visit" id="langskomen" aria-labelledby="visit-title">
+    <div class="wrap visit-grid">
     <div class="visit-map">
       <iframe title="Kaart: Inkstation, Passage 63 in Waddinxveen" src="https://www.openstreetmap.org/export/embed.html?bbox=4.6489%2C52.0420%2C4.6590%2C52.0472&amp;layer=mapnik" loading="lazy"></iframe>
       <svg class="map-pin" viewBox="0 0 10 14" aria-hidden="true"><path d="M5 0C5 0 0 6.4 0 9.2a5 5 0 0 0 10 0C10 6.4 5 0 5 0Z"/></svg>
@@ -279,13 +281,15 @@
       </div>
       <p class="visit-extra"><a href="mailto:inkstation.waddinxveen@gmail.com">inkstation.waddinxveen@gmail.com</a> · <a href="https://www.facebook.com/p/Inkstation-Waddinxveen-100069307043639/" rel="noopener" target="_blank">Inkstation op Facebook</a> · Ook DHL-afgiftepunt</p>
     </div>
+    </div>
   </section>
 </main>
 
 <footer class="site-foot">
   <div class="wrap foot">
-    <a class="logo logo-tile" href="#top" aria-label="Inkstation, naar boven">
-      <span aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
+    <a class="logo logo-foot" href="#top" aria-label="Inkstation Waddinxveen, naar boven">
+      <span class="logo-word" aria-hidden="true">INKSTATION</span><svg class="drops" aria-hidden="true"><use href="#drops"/></svg>
+      <span class="logo-place" aria-hidden="true">Waddinxveen</span>
     </a>
     <div class="foot-meta">
       <p>Inkstation, sinds 2005 · Passage 63 · 2741 HB Waddinxveen · KvK 24377836 · <a href="https://www.facebook.com/p/Inkstation-Waddinxveen-100069307043639/" rel="noopener" target="_blank">Facebook</a></p>

@@ -5,8 +5,10 @@
   src: url("../fonts/archivo-latin.woff2") format("woff2");
 }
 :root {
-  --brand: #ffe500; --red: #e30613; --red-deep: #c4040f; --ink: #111114; --ink-2: #55575e; --line: #d9dadf;
-  --tint: #f3f3f5; --paper: #fff; --blue: #0057b8;
+  /* Same calm palette as the site: soft background, the shop's colours as accents */
+  --brand: #ffe500; --red: #d7141d; --red-deep: #b10f17; --ink: #1f1f22; --ink-2: #5f6066; --line: #e2ded2;
+  --tint: #faf8f3; --paper: #fff; --blue: #1b5fb0; --drop-cut: #faf8f3;
+  --radius: 14px; --shadow: 0 1px 2px rgba(31, 31, 34, .06), 0 8px 24px rgba(31, 31, 34, .06);
   --dur: .18s; --ease: cubic-bezier(.4, 0, .2, 1);
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -78,18 +80,18 @@ input::placeholder, textarea::placeholder { color: #9a9ba3; }
 .seg input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 1px; }
 
 /* ---------- Login ---------- */
-.login { min-height: 100dvh; display: grid; place-items: center; padding: 32px 16px; background: var(--brand); }
+.login { min-height: 100dvh; display: grid; place-items: center; padding: 32px 16px; background: var(--tint); }
 .login-card { width: min(440px, 100%); display: grid; gap: 12px; }
 .login .mark { font-size: clamp(40px, 11vw, 64px); margin-bottom: 20px; justify-self: center; }
 .login-title { margin: 0; font-size: 28px; font-weight: 800; font-stretch: 112%; line-height: 1.15; }
 .login-sub { color: var(--ink-2); margin-bottom: 12px; }
-#login-form { display: grid; gap: 16px; padding: 28px; background: var(--paper); border-top: 4px solid var(--ink); }
+#login-form { display: grid; gap: 16px; padding: 28px; background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--brand); }
 .demo-note { padding: 12px 14px; background: rgba(255, 255, 255, .6); font-size: 14px; }
 .back-link { justify-self: center; margin-top: 8px; font-weight: 700; color: var(--ink); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 /* ---------- App ---------- */
 .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 20px; padding: 12px 24px; min-height: 72px;
-  background: var(--brand); box-shadow: 0 1px 0 rgba(17, 17, 20, .12); }
+  background: #fff; --drop-cut: #fff; box-shadow: inset 0 -3px 0 var(--brand); }
 .save-state { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--ink-2); }
 .save-state::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #1f9d55; }
 .save-state.is-dirty { color: var(--ink); }
@@ -101,27 +103,17 @@ input::placeholder, textarea::placeholder { color: #9a9ba3; }
 
 .layout { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: 0; align-items: start; }
 .editor { display: grid; gap: 20px; padding: 32px 32px 64px; }
-.hello { font-size: clamp(26px, 3vw, 34px); font-weight: 800; font-stretch: 112%; line-height: 1.1; }
+.hello { font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; line-height: 1.2; }
 
-.card { background: var(--paper); border-top: 4px solid var(--ink); padding: 24px 24px 28px; display: grid; gap: 16px; }
+.card { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px 24px 28px; display: grid; gap: 16px; }
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.card h2 { margin: 0; font-size: 22px; font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.1; }
-.card[data-focus="aanbieding"] { border-top-color: var(--red); }
+.card h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
 .card-intro { color: var(--ink-2); margin-top: -6px; }
 .row { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 12px; }
 
 .offer-fields { display: grid; gap: 14px; transition: opacity var(--dur) var(--ease); }
 .offer-fields.is-off { opacity: .45; }
 
-/* The sticker editor: a live copy of the round window sticker next to its three lines */
-.sticker-edit { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px; background: var(--brand); }
-.sticker-mini { width: 148px; aspect-ratio: 1; border-radius: 50%; background: var(--red); color: #fff; transform: rotate(-8deg);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 14px; text-align: center;
-  font-size: 12px; font-weight: 700; line-height: 1.2; overflow: hidden; overflow-wrap: anywhere; }
-.sticker-mini b { font-size: 40px; font-weight: 800; font-stretch: 125%; line-height: 1; letter-spacing: -.02em; }
-.sticker-mini.is-empty { background: rgba(17, 17, 20, .12); color: transparent; }
-.sticker-fields { display: grid; gap: 8px; }
-.sticker-fields input.big { font-weight: 800; font-size: 20px; }
 
 /* Holiday periods */
 .periods { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -176,7 +168,7 @@ input::placeholder, textarea::placeholder { color: #9a9ba3; }
   .mark-small { font-size: 18px; }
   .save-state { font-size: 13px; }
   .topbar-actions { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; margin: 0; gap: 8px;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--brand); box-shadow: 0 -1px 0 rgba(17, 17, 20, .15); }
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #fff; box-shadow: inset 0 3px 0 var(--brand), 0 -4px 16px rgba(31, 31, 34, .08); }
   .topbar-actions .btn { flex: 1; min-height: 48px; }
   .toast { bottom: calc(84px + env(safe-area-inset-bottom)); }
   .btn-site, #logout { display: none; }
@@ -185,8 +177,6 @@ input::placeholder, textarea::placeholder { color: #9a9ba3; }
   .row { grid-template-columns: minmax(0, 1fr); }
   .period { padding: 14px 12px; }
   .period-dates { grid-template-columns: minmax(0, 1fr); }
-  .sticker-edit { grid-template-columns: 1fr; justify-items: center; }
-  .sticker-fields { width: 100%; }
   .day { grid-template-columns: 1fr auto; row-gap: 8px; }
   .day .field-time { grid-column: span 1; }
   .preview-head p span { display: none; }
